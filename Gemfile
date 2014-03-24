@@ -9,10 +9,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
-gem 'factory_girl_rails'
 gem 'rails_12factor', group: :production
 gem 'newrelic_rpm'
 gem 'httparty'
+gem 'haml-rails'
 
 # These are gems you may find useful for testing
 # I have NOT created configuration in the /spec directory for you
@@ -21,10 +21,12 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'chronic'
+  gem 'poltergeist'
+  gem 'faker'
+  gem 'simplecov', '~> 0.7.1', require: false
 end
 
 group :development, :test do
-  gem 'faker'
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
@@ -32,6 +34,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-nav'
   gem 'pry-stack_explorer'
+  gem 'factory_girl_rails'
 end
 
 # Other gems you may find useful for development
