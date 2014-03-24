@@ -12,4 +12,9 @@ describe Pledge do
 			expect(Pledge.create(user_id: 1, gift_id: 1, amount: 34)).to be_valid
 		end
 	end
+
+	describe 'associations' do
+		it { should belong_to(:user) }
+		it { should belong_to(:gift) }
+	end
 end
