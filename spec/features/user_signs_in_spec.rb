@@ -20,4 +20,12 @@ feature 'User Signs In' do
 		expect(page).to have_content('Invalid email or password')
 	end
 
+	scenario 'Signs in unsuccessfully without email' do
+		visit root_path
+		click_on 'User Login'
+		fill_in 'Password', with: @user.password
+		click_button 'Sign in'
+		expect(page).to have_content('Invalid email or password')
+	end
+
 end
