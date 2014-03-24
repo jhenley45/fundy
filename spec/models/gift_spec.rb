@@ -19,4 +19,9 @@ describe Gift do
 	  	end_date: DateTime.new())).to_not be_valid
 	  end
 	end
+
+	describe 'associations' do
+		it { should have_many(:users) }
+		it { should have_many(:pledges) }
+	end
 end
