@@ -12,4 +12,12 @@ feature 'User Signs In' do
 		expect(page).to have_content('jack@wahoo.com')
 	end
 
+	scenario 'Signs in unsuccessfully without password' do
+		visit root_path
+		click_on 'User Login'
+		fill_in 'Email', with: @user.email
+		click_button 'Sign in'
+		expect(page).to have_content('Invalid email or password')
+	end
+
 end
