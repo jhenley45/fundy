@@ -12,6 +12,7 @@ gem 'devise'
 gem 'factory_girl_rails'
 gem 'rails_12factor', group: :production
 gem 'newrelic_rpm'
+gem 'httparty'
 
 # These are gems you may find useful for testing
 # I have NOT created configuration in the /spec directory for you
