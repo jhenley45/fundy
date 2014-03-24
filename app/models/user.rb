@@ -4,5 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has many :gifts, through: :pledges
+  has_many :gifts, through: :pledges
+  has_many :pledges
 end
