@@ -4,7 +4,7 @@ class CreatePledges < ActiveRecord::Migration
       t.references :user, index: true
       t.references :gift, index: true
       t.decimal :amount
-      t.boolean :owner
+      t.boolean :owner, default: false
 
       t.timestamps
     end

@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140324161400) do
     t.integer  "user_id"
     t.integer  "gift_id"
     t.decimal  "amount"
-    t.boolean  "owner"
+    t.boolean  "owner",      default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
