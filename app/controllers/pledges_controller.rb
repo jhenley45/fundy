@@ -28,7 +28,21 @@ class PledgesController < ApplicationController
 
   end
 
+  def edit
+    @gift = Gift.find(params[:gift_id])
+    @pledge = Pledge.find(params[:id])
+  end
+
   def update
+    @gift = Gift.find(params[:gift_id])
+    @pledge = Pledge.find(params[:id])
+    if @pledge.update(pledge_params)
+      flash['alert'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully updated!"
+      redirect_to @gift
+    else
+      flash.now['errors'] = @pledge.errors.full_messages.join(', ')
+      render :edit
+    end
   end
 
   def destroy

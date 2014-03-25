@@ -45,7 +45,6 @@ class GiftsController < ApplicationController
 	end
 
 	def destroy
-
 		user = current_user
 		@gift = Gift.find(params[:id])
 		if user.gifts.delete(@gift) && @gift.delete

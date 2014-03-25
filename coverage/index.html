@@ -14,26 +14,26 @@
       <img src="./assets/0.7.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2014-03-25T15:48:46-04:00">2014-03-25T15:48:46-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2014-03-25T16:07:25-04:00">2014-03-25T16:07:25-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">96.28%</span></span>
+    (<span class="covered_percent"><span class="green">96.64%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.9
+         1.98
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>35</b> files in total.
-    <b>323</b> relevant lines. 
-    <span class="green"><b>311</b> lines covered</span> and
+    <b>36</b> files in total.
+    <b>357</b> relevant lines. 
+    <span class="green"><b>345</b> lines covered</span> and
     <span class="red"><b>12</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -63,21 +63,21 @@
       <tr>
         <td class="strong"><a href="#64037862f49524fb73554a193805670bec108721" class="src_link" title="app/controllers/gifts_controller.rb">app/controllers/gifts_controller.rb</a></td>
         <td class="green strong">94.59 %</td>
-        <td>66</td>
+        <td>65</td>
         <td>37</td>
         <td>35</td>
         <td>2</td>
-        <td>4.3</td>
+        <td>4.9</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#e2b78a084db0e5acbc3d02aecf638916179b00f9" class="src_link" title="app/controllers/pledges_controller.rb">app/controllers/pledges_controller.rb</a></td>
-        <td class="green strong">92.86 %</td>
-        <td>52</td>
-        <td>28</td>
-        <td>26</td>
+        <td class="green strong">94.74 %</td>
+        <td>66</td>
+        <td>38</td>
+        <td>36</td>
         <td>2</td>
-        <td>2.4</td>
+        <td>3.3</td>
       </tr>
       
       <tr>
@@ -331,6 +331,16 @@
       </tr>
       
       <tr>
+        <td class="strong"><a href="#a9181d546f30968db04de120213a8e10a14e339f" class="src_link" title="spec/features/user_updates_pledge_spec.rb">spec/features/user_updates_pledge_spec.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>34</td>
+        <td>24</td>
+        <td>24</td>
+        <td>0</td>
+        <td>1.2</td>
+      </tr>
+      
+      <tr>
         <td class="strong"><a href="#22eef23228e3f37cee953c65029842d20938775e" class="src_link" title="spec/features/visitor_signs_up_spec.rb">spec/features/visitor_signs_up_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>15</td>
@@ -387,7 +397,7 @@
         <td>11</td>
         <td>11</td>
         <td>0</td>
-        <td>9.6</td>
+        <td>10.7</td>
       </tr>
       
       <tr>
@@ -397,7 +407,7 @@
         <td>16</td>
         <td>8</td>
         <td>8</td>
-        <td>4.8</td>
+        <td>5.7</td>
       </tr>
       
     </tbody>
@@ -496,8 +506,8 @@
           <code class="ruby">	def index</code>
         </li>
       
-        <li class="covered" data-hits="49" data-linenumber="4">
-          <span class="hits">49</span>
+        <li class="covered" data-hits="58" data-linenumber="4">
+          <span class="hits">58</span>
           
           <code class="ruby">		@gifts = Gift.all</code>
         </li>
@@ -520,14 +530,14 @@
           <code class="ruby">	def show</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="8">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="23" data-linenumber="8">
+          <span class="hits">23</span>
           
           <code class="ruby">		@gift = Gift.find(params[:id])</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="9">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="23" data-linenumber="9">
+          <span class="hits">23</span>
           
           <code class="ruby">		@gift_owner_id = @gift.pledges.find_by(owner: true).user_id</code>
         </li>
@@ -760,115 +770,109 @@
           <code class="ruby">	def destroy</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="48">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="49">
+        <li class="covered" data-hits="1" data-linenumber="48">
           <span class="hits">1</span>
           
           <code class="ruby">		user = current_user</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="50">
+        <li class="covered" data-hits="1" data-linenumber="49">
           <span class="hits">1</span>
           
           <code class="ruby">		@gift = Gift.find(params[:id])</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="51">
+        <li class="covered" data-hits="1" data-linenumber="50">
           <span class="hits">1</span>
           
           <code class="ruby">		if user.gifts.delete(@gift) &amp;&amp; @gift.delete</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="52">
+        <li class="covered" data-hits="1" data-linenumber="51">
           <span class="hits">1</span>
           
           <code class="ruby">			flash[&#39;alert&#39;] = &quot;Your campaign &#39;#{@gift.name}&#39; has been successfully deleted.&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="53">
+        <li class="covered" data-hits="1" data-linenumber="52">
           <span class="hits">1</span>
           
           <code class="ruby">			redirect_to gifts_path</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="54">
+        <li class="never" data-hits="" data-linenumber="53">
           
           
           <code class="ruby">		else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="55">
+        <li class="missed" data-hits="0" data-linenumber="54">
           
           
           <code class="ruby">			flash.now[&#39;errors&#39;] = @gift.errors.full_messages.join(&#39;, &#39;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="56">
+        <li class="missed" data-hits="0" data-linenumber="55">
           
           
           <code class="ruby">			render :show</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="57">
+        <li class="never" data-hits="" data-linenumber="56">
           
           
           <code class="ruby">		end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="58">
+        <li class="never" data-hits="" data-linenumber="57">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="59">
+        <li class="never" data-hits="" data-linenumber="58">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="60">
+        <li class="covered" data-hits="2" data-linenumber="59">
           <span class="hits">2</span>
           
           <code class="ruby">	private</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="61">
+        <li class="never" data-hits="" data-linenumber="60">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="62">
+        <li class="covered" data-hits="2" data-linenumber="61">
           <span class="hits">2</span>
           
           <code class="ruby">	def gift_params</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="63">
+        <li class="covered" data-hits="8" data-linenumber="62">
           <span class="hits">8</span>
           
           <code class="ruby">	  params.require(:gift).permit(:name, :end_date, :goal, :reason, :description, :avatar)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="64">
+        <li class="never" data-hits="" data-linenumber="63">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="65">
+        <li class="never" data-hits="" data-linenumber="64">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="66">
+        <li class="never" data-hits="" data-linenumber="65">
           
           
           <code class="ruby">end</code>
@@ -881,10 +885,10 @@
         <div class="source_table" id="e2b78a084db0e5acbc3d02aecf638916179b00f9">
   <div class="header">
     <h3>app/controllers/pledges_controller.rb</h3>
-    <h4><span class="green">92.86 %</span> covered</h4>
+    <h4><span class="green">94.74 %</span> covered</h4>
     <div>
-      <b>28</b> relevant lines. 
-      <span class="green"><b>26</b> lines covered</span> and
+      <b>38</b> relevant lines. 
+      <span class="green"><b>36</b> lines covered</span> and
       <span class="red"><b>2</b> lines missed.</span>
     </div>
   </div>
@@ -946,14 +950,14 @@
           <code class="ruby">  def new</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="10">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="7" data-linenumber="10">
+          <span class="hits">7</span>
           
           <code class="ruby">    @gift = Gift.find(params[:gift_id])</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="11">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="7" data-linenumber="11">
+          <span class="hits">7</span>
           
           <code class="ruby">    @pledge = Pledge.new</code>
         </li>
@@ -976,26 +980,26 @@
           <code class="ruby">  def create</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="15">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="7" data-linenumber="15">
+          <span class="hits">7</span>
           
           <code class="ruby">    @gift = Gift.find(params[:gift_id])</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="16">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="7" data-linenumber="16">
+          <span class="hits">7</span>
           
           <code class="ruby">    @user = current_user</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="17">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="7" data-linenumber="17">
+          <span class="hits">7</span>
           
           <code class="ruby">    @pledge = @gift.pledges.new(pledge_params)</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="18">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="7" data-linenumber="18">
+          <span class="hits">7</span>
           
           <code class="ruby">    @pledge.user_id = @user.id</code>
         </li>
@@ -1006,20 +1010,20 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="20">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="7" data-linenumber="20">
+          <span class="hits">7</span>
           
           <code class="ruby">    if @pledge.save</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="21">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="6" data-linenumber="21">
+          <span class="hits">6</span>
           
           <code class="ruby">      flash[&#39;alert&#39;] = &quot;Your pledge of $#{@pledge.amount} to &#39;#{@gift.name}&#39; has been successfully recorded!&quot;</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="22">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="6" data-linenumber="22">
+          <span class="hits">6</span>
           
           <code class="ruby">      redirect_to gift_path(@gift)</code>
         </li>
@@ -1075,97 +1079,97 @@
         <li class="covered" data-hits="2" data-linenumber="31">
           <span class="hits">2</span>
           
-          <code class="ruby">  def update</code>
+          <code class="ruby">  def edit</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="32">
+        <li class="covered" data-hits="4" data-linenumber="32">
+          <span class="hits">4</span>
+          
+          <code class="ruby">    @gift = Gift.find(params[:gift_id])</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="33">
+          <span class="hits">4</span>
+          
+          <code class="ruby">    @pledge = Pledge.find(params[:id])</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="33">
+        <li class="never" data-hits="" data-linenumber="35">
           
           
           <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="34">
-          <span class="hits">2</span>
-          
-          <code class="ruby">  def destroy</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="35">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    @gift = Gift.find(params[:gift_id])</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="36">
           <span class="hits">2</span>
           
+          <code class="ruby">  def update</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="37">
+          <span class="hits">4</span>
+          
+          <code class="ruby">    @gift = Gift.find(params[:gift_id])</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="38">
+          <span class="hits">4</span>
+          
           <code class="ruby">    @pledge = Pledge.find(params[:id])</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="37">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="39">
+          <span class="hits">4</span>
           
-          <code class="ruby">    if @pledge.delete</code>
+          <code class="ruby">    if @pledge.update(pledge_params)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="38">
+        <li class="covered" data-hits="2" data-linenumber="40">
           <span class="hits">2</span>
           
-          <code class="ruby">      flash[&#39;alert&#39;] = &quot;Your pledge of $#{@pledge.amount} to &#39;#{@gift.name}&#39; has been successfully deleted!&quot;</code>
+          <code class="ruby">      flash[&#39;alert&#39;] = &quot;Your pledge of $#{@pledge.amount} to &#39;#{@gift.name}&#39; has been successfully updated!&quot;</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="39">
+        <li class="covered" data-hits="2" data-linenumber="41">
           <span class="hits">2</span>
           
-          <code class="ruby">      redirect_to gift_path(@gift)</code>
+          <code class="ruby">      redirect_to @gift</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="never" data-hits="" data-linenumber="42">
           
           
           <code class="ruby">    else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="41">
+        <li class="covered" data-hits="2" data-linenumber="43">
+          <span class="hits">2</span>
           
-          
-          <code class="ruby">      flash.now[&#39;errors&#39;] = @gift.errors.full_messages.join(&#39;, &#39;)</code>
+          <code class="ruby">      flash.now[&#39;errors&#39;] = @pledge.errors.full_messages.join(&#39;, &#39;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="42">
+        <li class="covered" data-hits="2" data-linenumber="44">
+          <span class="hits">2</span>
           
-          
-          <code class="ruby">      render :show</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="43">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="44">
-          
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">      render :edit</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="45">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="46">
-          <span class="hits">2</span>
+        <li class="never" data-hits="" data-linenumber="46">
           
-          <code class="ruby">  private</code>
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="47">
@@ -1177,28 +1181,112 @@
         <li class="covered" data-hits="2" data-linenumber="48">
           <span class="hits">2</span>
           
-          <code class="ruby">  def pledge_params</code>
+          <code class="ruby">  def destroy</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="49">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="1" data-linenumber="49">
+          <span class="hits">1</span>
           
-          <code class="ruby">    params.require(:pledge).permit(:amount)</code>
+          <code class="ruby">    @gift = Gift.find(params[:gift_id])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="50">
+        <li class="covered" data-hits="1" data-linenumber="50">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @pledge = Pledge.find(params[:id])</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="51">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    if @pledge.delete</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="52">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      flash[&#39;alert&#39;] = &quot;Your pledge of $#{@pledge.amount} to &#39;#{@gift.name}&#39; has been successfully deleted!&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="53">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      redirect_to gift_path(@gift)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="54">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="55">
+          
+          
+          <code class="ruby">      flash.now[&#39;errors&#39;] = @gift.errors.full_messages.join(&#39;, &#39;)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="56">
+          
+          
+          <code class="ruby">      render :show</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="57">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="58">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="51">
+        <li class="never" data-hits="" data-linenumber="59">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="52">
+        <li class="covered" data-hits="2" data-linenumber="60">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="61">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="62">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  def pledge_params</code>
+        </li>
+      
+        <li class="covered" data-hits="11" data-linenumber="63">
+          <span class="hits">11</span>
+          
+          <code class="ruby">    params.require(:pledge).permit(:amount)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="64">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="65">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="66">
           
           
           <code class="ruby">end</code>
@@ -5432,6 +5520,228 @@
   </pre>
 </div>
       
+        <div class="source_table" id="a9181d546f30968db04de120213a8e10a14e339f">
+  <div class="header">
+    <h3>spec/features/user_updates_pledge_spec.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>24</b> relevant lines. 
+      <span class="green"><b>24</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require &#39;spec_helper&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="2">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">feature &#39;User Signs In&#39; do</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="4">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">	context &#39;when signed in&#39;, :js do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
+          
+          <code class="ruby">		background do</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="7">
+          <span class="hits">2</span>
+          
+          <code class="ruby">			pledge = create(:pledge)</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="8">
+          <span class="hits">2</span>
+          
+          <code class="ruby">			visit root_path</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="9">
+          <span class="hits">2</span>
+          
+          <code class="ruby">			sign_in_as(pledge.user)</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="10">
+          <span class="hits">2</span>
+          
+          <code class="ruby">			click_on &#39;test gift&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby">		end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="13">
+          <span class="hits">1</span>
+          
+          <code class="ruby">		scenario &#39;Updates a pledge successfully&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="14">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			click_on &#39;Make a pledge to this campaign&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="15">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			fill_in &#39;Your pledge amount:&#39;, with: &#39;10.55&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="16">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			click_on &#39;Make Pledge!&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="17">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			click_on &#39;Update this pledge&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="18">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			fill_in &#39;New pledge amount:&#39;, with: &#39;11.55&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="19">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			click_on &#39;Update Pledge!&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="20">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			expect(page).to have_content(&#39;Your pledge of $11.55 to \&#39;test gift\&#39; has been successfully updated!&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="21">
+          
+          
+          <code class="ruby">		end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="23">
+          <span class="hits">1</span>
+          
+          <code class="ruby">		scenario &#39;Updates a pledge successfully&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="24">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			click_on &#39;Make a pledge to this campaign&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="25">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			fill_in &#39;Your pledge amount:&#39;, with: &#39;10.55&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="26">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			click_on &#39;Make Pledge!&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="27">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			click_on &#39;Update this pledge&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="28">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			fill_in &#39;New pledge amount:&#39;, with: &#39;&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="29">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			click_on &#39;Update Pledge!&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="30">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			expect(page).to have_content(&#39;Amount can\&#39;t be blank&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="31">
+          
+          
+          <code class="ruby">		end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="32">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="33">
+          
+          
+          <code class="ruby">	end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
         <div class="source_table" id="22eef23228e3f37cee953c65029842d20938775e">
   <div class="header">
     <h3>spec/features/visitor_signs_up_spec.rb</h3>
@@ -6088,8 +6398,8 @@
           <code class="ruby">  config.before(:each) do</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="7">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="31" data-linenumber="7">
+          <span class="hits">31</span>
           
           <code class="ruby">    DatabaseCleaner.strategy = :transaction</code>
         </li>
@@ -6112,8 +6422,8 @@
           <code class="ruby">  config.before(:each, js: true) do</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="11">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="11" data-linenumber="11">
+          <span class="hits">11</span>
           
           <code class="ruby">    DatabaseCleaner.strategy = :truncation</code>
         </li>
@@ -6136,8 +6446,8 @@
           <code class="ruby">  config.before(:each) do</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="15">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="31" data-linenumber="15">
+          <span class="hits">31</span>
           
           <code class="ruby">    DatabaseCleaner.start</code>
         </li>
@@ -6160,8 +6470,8 @@
           <code class="ruby">  config.after(:each) do</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="19">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="31" data-linenumber="19">
+          <span class="hits">31</span>
           
           <code class="ruby">    DatabaseCleaner.clean</code>
         </li>
@@ -6208,32 +6518,32 @@
           <code class="ruby">	def sign_in_as(user)</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="3">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="17" data-linenumber="3">
+          <span class="hits">17</span>
           
           <code class="ruby">		visit root_path</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="4">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="17" data-linenumber="4">
+          <span class="hits">17</span>
           
           <code class="ruby">		click_on &#39;User Login&#39;</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="5">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="17" data-linenumber="5">
+          <span class="hits">17</span>
           
           <code class="ruby">		fill_in &#39;Email&#39;, with: user.email</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="6">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="17" data-linenumber="6">
+          <span class="hits">17</span>
           
           <code class="ruby">		fill_in &#39;Password&#39;, with: user.password</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="7">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="17" data-linenumber="7">
+          <span class="hits">17</span>
           
           <code class="ruby">		click_button &#39;Sign in&#39;</code>
         </li>

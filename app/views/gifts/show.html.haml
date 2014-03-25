@@ -9,6 +9,7 @@
 		= pledge.amount
 		- if current_user.id == pledge.user_id
 			= link_to 'Delete this pledge', gift_pledge_path(@gift, pledge), method: :delete
+			= link_to 'Update this pledge', edit_gift_pledge_path(@gift, pledge)
 
 - if current_user.id == @gift_owner_id
 	= link_to 'Delete this campaign', gift_path, method: :delete, id: 'delete-gift-button'
