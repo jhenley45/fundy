@@ -28,7 +28,7 @@ feature 'User Signs In' do
 			fill_in 'Campaign duration:', with: '30'
 			fill_in 'Campaign goal:', with: '1,500'
 			click_on 'Create campaign!'
-			expect(page).to have_content 'This field is required'
+			expect(page).to have_content 'Name can\'t be blank'
 		end
 
 		scenario 'Tries to unsuccessfully add a new gift without an end date' do
@@ -39,7 +39,7 @@ feature 'User Signs In' do
 			fill_in 'Reason for gift:', with: 'Steves birthday is coming up. Lets get him a new computer!'
 			fill_in 'Campaign goal:', with: '1,500'
 			click_on 'Create campaign!'
-			expect(page).to have_content 'This field is required'
+			expect(page).to have_content 'End date can\'t be blank'
 		end
 
 		scenario 'Tries to unsuccessfully add a new gift without a campaign goal' do
@@ -50,7 +50,7 @@ feature 'User Signs In' do
 			fill_in 'Reason for gift:', with: 'Steves birthday is coming up. Lets get him a new computer!'
 			fill_in 'Campaign duration:', with: '30'
 			click_on 'Create campaign!'
-			expect(page).to have_content 'This field is required'
+			expect(page).to have_content 'Goal can\'t be blank'
 		end
 
 	end

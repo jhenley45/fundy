@@ -1,6 +1,8 @@
 = form_for @gift do |f|
 	= f.label(:name, 'Title for campaign:')
 	= f.text_field :name
+	= f.label(:avatar, 'Campaign Image')
+	= f.file_field(:avatar, value: 'Image:')
 	= f.label(:description, 'Description of gift:')
 	= f.text_field :description
 	= f.label(:reason, 'Reason for gift:')
