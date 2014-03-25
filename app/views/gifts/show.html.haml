@@ -1,5 +1,6 @@
 %h1= @gift.name
 
+= link_to 'Make a pledge to this campaign', new_gift_pledge_path(@gift)
 
 = if current_user.id = @gift_owner_id
 	= link_to 'Delete this campaign', gift_path, method: :delete

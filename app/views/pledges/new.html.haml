@@ -1,0 +1,4 @@
+= form_for [@gift, @pledge] do |f|
+	= f.label(:amount, 'Your pledge amount:')
+	= f.text_field :amount
+	= f.submit value="Make Pledge!"
