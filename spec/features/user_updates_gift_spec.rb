@@ -2,12 +2,12 @@ require 'spec_helper'
 
 feature 'User Signs In' do
 
-	context 'when signed in', :js do
+	context 'when signed in' do
 		background do
-			@user = create(:user)
+			pledge = create(:pledge)
 			visit root_path
-			sign_in_as(@user)
-			add_new_gift
+			sign_in_as(pledge.user)
+			click_on 'test gift'
 		end
 
 		scenario 'Updates a gift successfully' do

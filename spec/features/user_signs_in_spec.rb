@@ -9,7 +9,7 @@ feature 'User Signs In' do
 
 	scenario 'Signs in successfully' do
 		sign_in_as(@user)
-		expect(page).to have_content('jack@wahoo.com')
+		expect(page).to have_content(@user.email)
 	end
 
 	scenario 'Signs in unsuccessfully without password' do

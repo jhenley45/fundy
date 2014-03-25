@@ -7,6 +7,7 @@ class GiftsController < ApplicationController
 	def show
 		@gift = Gift.find(params[:id])
 		@gift_owner_id = @gift.pledges.find_by(owner: true).user_id
+
 	end
 
 	def new
@@ -47,7 +48,7 @@ class GiftsController < ApplicationController
 
 		user = current_user
 		@gift = Gift.find(params[:id])
-		if user.gifts.delete(@gift)
+		if user.gifts.delete(@gift) && @gift.delete
 			flash['alert'] = "Your campaign '#{@gift.name}' has been successfully deleted."
 			redirect_to gifts_path
 		else

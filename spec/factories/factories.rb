@@ -1,7 +1,22 @@
 FactoryGirl.define do
 
 	factory :user do
-		email 'jack@wahoo.com'
+		email Faker::Internet.email
 		password 'swordfish'
+	end
+
+	factory :gift do
+		name 'test gift'
+		description 'testing'
+		reason 'because'
+		end_date '10'
+		goal '400'
+	end
+
+	factory :pledge do
+		user
+		gift
+		owner true
+		amount 300
 	end
 end

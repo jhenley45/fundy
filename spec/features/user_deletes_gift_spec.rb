@@ -4,15 +4,15 @@ feature 'User Signs In' do
 
 	context 'when signed in' do
 		background do
-			@user = create(:user)
+			pledge = create(:pledge)
 			visit root_path
-			sign_in_as(@user)
-			add_new_gift
+			sign_in_as(pledge.user)
+			click_on 'test gift'
 		end
 
 		scenario 'Deletes a new gift successfully' do
-			click_on 'Delete this campaign'
-			expect(page).to have_content('Your campaign \'New computer for Steve\' has been successfully deleted.')
+			find('#delete-gift-button').click
+			expect(page).to have_content('Your campaign \'test gift\' has been successfully deleted.')
 		end
 
 	end
