@@ -1,1 +1,6 @@
+%h1 All current gift campaigns
+
+- @gifts.each do |gift|
+	.gift{:id => "gift_#{gift.id}"}
+		= link_to "#{gift.name}", gift_path(gift)
 = link_to 'Create New Gift Campaign', new_gift_path
