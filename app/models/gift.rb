@@ -21,4 +21,5 @@ class Gift < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   #has_attached_file :avatar, :default_url => "/missing.png"
 
+
 end

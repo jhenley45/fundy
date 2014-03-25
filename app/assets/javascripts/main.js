@@ -20,3 +20,9 @@
 // 		}
 // 	});
 // }
+$(document).ready(function() {
+	$('#gift_end_date').datepicker({
+        dateFormat: 'D, dd M yy'
+    });
+
+})

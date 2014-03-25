@@ -1,6 +1,8 @@
 %h1= @gift.name
 = image_tag @gift.avatar.url(:large)
 
+= link_to 'Back to all gifts', gifts_path
+
 = link_to 'Make a pledge to this campaign', new_gift_pledge_path(@gift)
 
 - @gift.pledges.each do | pledge |

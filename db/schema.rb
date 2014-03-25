@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20140325154031) do
   create_table "pledges", force: true do |t|
     t.integer  "user_id"
     t.integer  "gift_id"
-    t.decimal  "amount"
+    t.float    "amount"
     t.boolean  "owner",      default: false
     t.datetime "created_at"
     t.datetime "updated_at"

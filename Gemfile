@@ -16,6 +16,7 @@ gem 'haml-rails'
 gem 'jquery-validation-rails'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'jquery-ui-rails'
 
 # These are gems you may find useful for testing
 # I have NOT created configuration in the /spec directory for you

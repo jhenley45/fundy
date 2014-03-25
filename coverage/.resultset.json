@@ -815,6 +815,7 @@
         1,
         null,
         null,
+        null,
         null
       ],
       "/Users/jackhenley/code/project/grifter/spec/models/pledge_spec.rb": [
@@ -1002,7 +1003,7 @@
         null
       ]
     },
-    "timestamp": 1395778045
+    "timestamp": 1395784012
   },
   "Cucumber Features": {
     "coverage": {

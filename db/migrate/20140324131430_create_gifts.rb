@@ -4,7 +4,7 @@ class CreateGifts < ActiveRecord::Migration
       t.text :name
       t.text :description
       t.text :reason
-      t.timestamp :end_date
+      t.datetime :end_date
       t.integer :goal
 
       t.timestamps
