@@ -14,8 +14,8 @@ class PledgesController < ApplicationController
   def create
     @gift = Gift.find(params[:gift_id])
     @user = current_user
-    @pledge = @gift.pledges.new(pledge_params)
-    @pledge.user_id = @user.id
+    @pledge = @user.pledges.new(pledge_params)
+    @pledge.gift_id = @gift.id
 
     if @pledge.save
       flash['alert'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully recorded!"

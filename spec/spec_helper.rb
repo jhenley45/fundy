@@ -20,6 +20,8 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include SessionHelpers
 
+  config.treat_symbols_as_metadata_keys_with_true_values = true
+
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
 

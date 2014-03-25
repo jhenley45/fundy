@@ -8,7 +8,7 @@
 - @gift.pledges.each do | pledge |
 	- if pledge.owner == false
 		= pledge.user.email
-		= pledge.amount
+		= pledge.amount.to_s(:currency)
 		- if current_user.id == pledge.user_id
 			= link_to 'Delete this pledge', gift_pledge_path(@gift, pledge), method: :delete
 			= link_to 'Update this pledge', edit_gift_pledge_path(@gift, pledge)
