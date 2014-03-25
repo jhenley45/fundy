@@ -25,6 +25,20 @@ class GiftsController < ApplicationController
 
 	end
 
+	def edit
+	  @gift = Gift.find(params[:id])
+	end
+
+	def update
+		@gift = Gift.find(params[:id])
+		if @gift.update(gift_params)
+			flash['alert'] = "Your campaign '#{@gift.name}' has been successfully updated."
+		  redirect_to @gift
+		else
+		  render 'edit'
+		end
+	end
+
 	def destroy
 
 		user = current_user

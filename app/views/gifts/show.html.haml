@@ -3,3 +3,4 @@
 
 = if current_user.id = @gift_owner_id
 	= link_to 'Delete this campaign', gift_path, method: :delete
+	= link_to 'Update this campaign', edit_gift_path(@gift)

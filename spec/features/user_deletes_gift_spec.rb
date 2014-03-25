@@ -10,7 +10,7 @@ feature 'User Signs In' do
 			add_new_gift
 		end
 
-		scenario 'Adds a new gift successfully' do
+		scenario 'Deletes a new gift successfully' do
 			click_on 'Delete this campaign'
 			expect(page).to have_content('Your campaign \'New computer for Steve\' has been successfully deleted.')
 		end
