@@ -17,5 +17,12 @@ feature 'User Signs In' do
 			expect(page).to have_content('Your pledge of $10.55 to \'test gift\' has been successfully recorded!')
 		end
 
+		scenario 'Adds a pledge unsuccessfully' do
+			click_on 'Make a pledge to this campaign'
+			fill_in 'Your pledge amount:', with: ''
+			click_on 'Make Pledge!'
+			expect(page).to have_content('Amount can\'t be blank')
+		end
+
 	end
 end

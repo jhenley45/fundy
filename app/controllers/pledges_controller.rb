@@ -20,6 +20,9 @@ class PledgesController < ApplicationController
     if @pledge.save
       flash['alert'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully recorded!"
       redirect_to gift_path(@gift)
+    else
+      flash.now['errors'] = @pledge.errors.full_messages.join(', ')
+      render :new
     end
 
 
@@ -29,6 +32,15 @@ class PledgesController < ApplicationController
   end
 
   def destroy
+    @gift = Gift.find(params[:gift_id])
+    @pledge = Pledge.find(params[:id])
+    if @pledge.delete
+      flash['alert'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully deleted!"
+      redirect_to gift_path(@gift)
+    else
+      flash.now['errors'] = @gift.errors.full_messages.join(', ')
+      render :show
+    end
   end
 
   private
