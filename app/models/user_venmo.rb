@@ -1,7 +1,6 @@
 class UserVenmo < ActiveRecord::Base
   belongs_to :user
 
-  require 'json'
 
   def self.get_user_venmo_info(code, user)
 		request = 'https://api.venmo.com/v1/oauth/access_token?'
@@ -27,6 +26,5 @@ class UserVenmo < ActiveRecord::Base
   		venmo_id: info['user']['id'].to_i,
   		refresh_token: info['refresh_token']
   	)
-  	binding.pry
   end
 end

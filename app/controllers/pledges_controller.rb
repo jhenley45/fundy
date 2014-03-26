@@ -18,6 +18,7 @@ class PledgesController < ApplicationController
     @pledge.gift_id = @gift.id
 
     if @pledge.save
+      @gift.check_pledge_total
       flash['alert'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully recorded!"
       redirect_to gift_path(@gift)
     else
