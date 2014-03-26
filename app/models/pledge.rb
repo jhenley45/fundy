@@ -3,5 +3,6 @@ class Pledge < ActiveRecord::Base
   belongs_to :gift
 
   validates :amount, presence: true
+  validates_numericality_of :amount, on: :create
 
 end
