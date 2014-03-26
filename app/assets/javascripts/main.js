@@ -5,7 +5,6 @@ $(document).ready(function() {
 	Grifter.datepickerFormat();
 	Grifter.addDateValidations();
 	Grifter.formatRemainder();
-
 })
 
 Grifter.datepickerFormat = function() {
