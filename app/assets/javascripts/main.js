@@ -19,15 +19,34 @@ Grifter.addDateValidations = function() {
 		now = new Date($.now());
 		if (user_date < now) {
 			event.preventDefault();
-			$('#new-form-errors').empty();
+			$('.form-errors').empty();
 			Grifter.addDateError();
 		};
-	})
+	});
+	$('.edit_gift').submit(function() {
+		user_date = new Date($('#gift_end_date').val());
+		now = new Date($.now());
+		if (user_date < now) {
+			event.preventDefault();
+			$('.form-errors').empty();
+			Grifter.addDateError();
+		};
+	});
+};
+
+Grifter.valiDate = function() {
+	user_date = new Date($('#gift_end_date').val());
+	now = new Date($.now());
+	if (user_date < now) {
+		event.preventDefault();
+		$('.form-errors').empty();
+		Grifter.addDateError();
+	};
 };
 
 Grifter.addDateError = function() {
 	var error_field, message;
-	error_field = $('#new-form-errors');
+	error_field = $('.form-errors');
 	message = $( "<p>Please select a date in the future</p>" );
 	message.addClass('form-error');
 	message.appendTo( error_field );
