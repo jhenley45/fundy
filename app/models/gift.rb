@@ -34,18 +34,25 @@ class Gift < ActiveRecord::Base
   def charge_gift_pledges
   	gift_creator = User.find(self.pledges.where(owner: true).first.user_id)
   	pay_to = gift_creator.user_venmo.venmo_id
-  	pledges = self.pledges.where(owner: false)
+  	pledges = self.pledges.where(owner: false, charged: nil)
 
   	pledges.each do |pledge|
   		venmo_info = pledge.user.user_venmo
-  		binding.pry
   		request = 'https://api.venmo.com/v1/payments?'
   		request += 'access_token=' + venmo_info.access_token
   		request += "&user_id=" + pay_to
   		request += "&amount=" + pledge.amount.to_s
   		request += '&note=Payment-of-' + pledge.amount.to_s + '-by-my-app'
   		response = HTTParty.post(request)
-  		binding.pry
+
+  		body = JSON.parse(response.body)
+  		if body['data']['payment']['status'].in?(['settled', 'pending'])
+	  		pledge.charged = true
+	  		pledge.save
+	  	else
+	  		pledge.charged = false
+	  		pledge.save
+	  	end
   	end
 
   end
