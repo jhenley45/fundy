@@ -1,18 +1,27 @@
 %h1= @gift.name
+
+%h3 Goal:
+=@gift.goal
+%br
+=calculate_remaining
+
 = image_tag @gift.avatar.url(:large)
-
+%br
 = link_to 'Back to all gifts', gifts_path
-
+%br
 = link_to 'Make a pledge to this campaign', new_gift_pledge_path(@gift)
-
+%br
 - @gift.pledges.each do | pledge |
 	- if pledge.owner == false
 		= pledge.user.email
 		= pledge.amount.to_s(:currency)
-		- if current_user.id == pledge.user_id
-			= link_to 'Delete this pledge', gift_pledge_path(@gift, pledge), method: :delete
-			= link_to 'Update this pledge', edit_gift_pledge_path(@gift, pledge)
-
-- if current_user.id == @gift_owner_id
-	= link_to 'Delete this campaign', gift_path, method: :delete, id: 'delete-gift-button'
-	= link_to 'Update this campaign', edit_gift_path(@gift)
+		- if user_signed_in?
+			- if current_user.id == pledge.user_id
+				= link_to 'Delete this pledge', gift_pledge_path(@gift, pledge), method: :delete
+				= link_to 'Update this pledge', edit_gift_pledge_path(@gift, pledge)
+	%br
+%br
+- if user_signed_in?
+	- if current_user.id == @gift_owner_id
+		= link_to 'Delete this campaign', gift_path, method: :delete, id: 'delete-gift-button'
+		= link_to 'Update this campaign', edit_gift_path(@gift)

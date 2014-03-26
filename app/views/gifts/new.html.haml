@@ -1,4 +1,6 @@
-= form_for @gift do |f|
+#new-form-errors
+
+= form_for @gift, :html => {:id => "new-gift-form"} do |f|
 	= f.label(:name, 'Title for campaign:')
 	= f.text_field :name
 	= f.label(:avatar, 'Campaign Image')
@@ -7,7 +9,7 @@
 	= f.text_field :description
 	= f.label(:reason, 'Reason for gift:')
 	= f.text_field :reason
-	= f.label(:end_date, 'Campaign duration:')
+	= f.label(:end_date, 'Campaign end date:')
 	= f.text_field :end_date
 	= f.label(:goal, 'Campaign goal:')
 	= f.text_field :goal
