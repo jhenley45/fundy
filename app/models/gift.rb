@@ -6,6 +6,7 @@ class Gift < ActiveRecord::Base
 	validates :end_date, presence: true
 	validates :goal, presence: true
 	validates_numericality_of :goal, on: :create
+	validates_numericality_of :goal, on: :update
 
 	# This method associates the attribute ":avatar" with a file attachment
   has_attached_file :avatar,

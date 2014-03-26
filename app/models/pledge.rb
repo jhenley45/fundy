@@ -4,5 +4,6 @@ class Pledge < ActiveRecord::Base
 
   validates :amount, presence: true
   validates_numericality_of :amount, on: :create
+  validates_numericality_of :amount, on: :update
 
 end
