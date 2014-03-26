@@ -4,7 +4,7 @@ class Gift < ActiveRecord::Base
 
 	validates :name, presence: true
 	validates :end_date, presence: true
-	validates :goal, presence: true
+	validates :goal, presence: true, :numericality => { :only_integer => true }
 
 	# This method associates the attribute ":avatar" with a file attachment
   has_attached_file :avatar,
@@ -19,7 +19,6 @@ class Gift < ActiveRecord::Base
 
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-  #has_attached_file :avatar, :default_url => "/missing.png"
 
 
 end
