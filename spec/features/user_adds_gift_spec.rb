@@ -15,7 +15,7 @@ feature 'User Signs In' do
 			fill_in 'Description of gift:', with: 'New macbook pro'
 			fill_in 'Reason for gift:', with: 'Steves birthday is coming up. Lets get him a new computer!'
 			fill_in 'Campaign end date:', with: 'Fri, 30 May 2014'
-			fill_in 'Campaign goal:', with: '1,500'
+			fill_in 'Campaign goal:', with: 1500
 			click_on 'Create campaign!'
 			expect(page).to have_content 'New computer for Steve'
 		end
@@ -26,7 +26,7 @@ feature 'User Signs In' do
 			fill_in 'Description of gift:', with: 'New macbook pro'
 			fill_in 'Reason for gift:', with: 'Steves birthday is coming up. Lets get him a new computer!'
 			fill_in 'Campaign end date:', with: 'Fri, 30 May 2014'
-			fill_in 'Campaign goal:', with: '1,500'
+			fill_in 'Campaign goal:', with: 1500
 			click_on 'Create campaign!'
 			expect(page).to have_content 'Name can\'t be blank'
 		end
@@ -37,7 +37,7 @@ feature 'User Signs In' do
 			fill_in 'Title for campaign', with: 'New computer for Steve'
 			fill_in 'Description of gift:', with: 'New macbook pro'
 			fill_in 'Reason for gift:', with: 'Steves birthday is coming up. Lets get him a new computer!'
-			fill_in 'Campaign goal:', with: '1,500'
+			fill_in 'Campaign goal:', with: 1500
 			click_on 'Create campaign!'
 			expect(page).to have_content 'End date can\'t be blank'
 		end
