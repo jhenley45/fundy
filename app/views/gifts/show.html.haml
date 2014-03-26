@@ -3,7 +3,9 @@
 %h3 Goal:
 =@gift.goal
 %br
-=calculate_remaining
+.gift-remainder
+	%span
+		=calculate_remaining
 
 = image_tag @gift.avatar.url(:large)
 %br

@@ -5,7 +5,7 @@ module GiftsHelper
 		@gift.pledges.each do |pledge|
 			sum += pledge.amount
 		end
-		@gift.goal - sum
+		@remainder = @gift.goal - sum
 	end
 
 end

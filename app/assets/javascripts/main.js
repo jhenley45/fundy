@@ -4,6 +4,7 @@ var Grifter = Grifter || {};
 $(document).ready(function() {
 	Grifter.datepickerFormat();
 	Grifter.addDateValidations();
+	Grifter.formatRemainder();
 
 })
 
@@ -34,15 +35,6 @@ Grifter.addDateValidations = function() {
 	});
 };
 
-Grifter.valiDate = function() {
-	user_date = new Date($('#gift_end_date').val());
-	now = new Date($.now());
-	if (user_date < now) {
-		event.preventDefault();
-		$('.form-errors').empty();
-		Grifter.addDateError();
-	};
-};
 
 Grifter.addDateError = function() {
 	var error_field, message;
@@ -52,7 +44,15 @@ Grifter.addDateError = function() {
 	message.appendTo( error_field );
 };
 
-
+Grifter.formatRemainder = function() {
+	var remainder_div, remainder;
+	remainder_div = $('.gift-remainder');
+	remainder = remainder_div.text()
+	if (remainder < 0) {
+		remainder_div.text('This campaign has surpassed its goal by: $' + Math.abs(remainder))
+		remainder_div.children().addClass('negative-remainder')
+	}
+}
 
 
 
