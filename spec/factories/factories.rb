@@ -20,4 +20,5 @@ require 'faker'
 		owner true
 		amount 300
 	end
+
 end
