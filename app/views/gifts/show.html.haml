@@ -11,7 +11,11 @@
 %br
 = link_to 'Back to all gifts', gifts_path
 %br
-= link_to 'Make a pledge to this campaign', new_gift_pledge_path(@gift)
+- if user_signed_in?
+	- if current_user.user_venmo
+		= link_to 'Make a pledge to this campaign', new_gift_pledge_path(@gift)
+	- else
+		= link_to 'To begin making pledges, connect your account to Venmo.', new_user_venmo_path
 %br
 - @gift.pledges.each do | pledge |
 	- if pledge.owner == false

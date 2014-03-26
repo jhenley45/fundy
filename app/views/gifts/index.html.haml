@@ -1,6 +1,14 @@
 %h1 All current gift campaigns
+- if user_signed_in?
+	- if current_user.user_venmo
+		= link_to 'Create New Gift Campaign', new_gift_path
+	- else
+		= link_to 'To create your own gift campaign, connect your account to Venmo.', new_user_venmo_path
 
 - @gifts.each do |gift|
 	.gift{:id => "gift_#{gift.id}"}
 		= link_to "#{gift.name}", gift_path(gift)
-= link_to 'Create New Gift Campaign', new_gift_path
+
+
+
+
