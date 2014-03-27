@@ -20,11 +20,13 @@ class PledgesController < ApplicationController
     if @pledge.save
       if @gift.funded?
         @gift.charge_gift_pledges
+        flash['alert'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully processed!"
+        redirect_to gift_path(@gift)
       else
         @gift.check_pledge_total
+        flash['alert'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully recorded!"
+        redirect_to gift_path(@gift)
       end
-      flash['alert'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully recorded!"
-      redirect_to gift_path(@gift)
     else
       flash.now['errors'] = @pledge.errors.full_messages.join(', ')
       render :new

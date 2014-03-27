@@ -46,7 +46,11 @@ class Gift < ActiveRecord::Base
   		response = HTTParty.post(request)
 
   		body = JSON.parse(response.body)
-  		if body['data']['payment']['status'].in?(['settled', 'pending'])
+      if body['error'].present?
+        # Do something with the error
+        pledge.charged = false
+        pledge.save
+  		elsif body['data']['payment']['status'].in?(['settled', 'pending'])
 	  		pledge.charged = true
 	  		pledge.save
 	  	else

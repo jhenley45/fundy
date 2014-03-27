@@ -14,20 +14,26 @@
 - if user_signed_in?
 	- if current_user.venmo_account
 		= link_to 'Make a pledge to this campaign', new_gift_pledge_path(@gift)
+		- if current_user.id == @gift_owner_id
+			#gift-owner-notice NOTICE: Venmo does not permit users to transfer money into their own account. That means that it is not possible for you, the creator of this campaign, to transfer funds into your own account. While your any pledges you make will show up on this page, but please note that if this campaign is funded your account will not actually be charged.
+		- if @gift.funded?
+			#funded-notice WARNING: This campaign has been funded. All future pledges will be processed immediately.
 	- else
 		= link_to 'To begin making pledges, connect your account to Venmo.', new_user_venmo_path
+- else
+	You must log in or sign up to begin making pledges
 %br
 - @gift.pledges.each do | pledge |
 	- if pledge.owner == false
 		= pledge.user.email
 		= pledge.amount.to_s(:currency)
-		- if user_signed_in?
-			- if current_user.id == pledge.user_id
+		- if user_signed_in? && current_user.id == pledge.user_id
+			- unless pledge.charged
 				= link_to 'Delete this pledge', gift_pledge_path(@gift, pledge), method: :delete
 				= link_to 'Update this pledge', edit_gift_pledge_path(@gift, pledge)
 	%br
 %br
-- if user_signed_in?
-	- if current_user.id == @gift_owner_id
+- if user_signed_in? && current_user.id == @gift_owner_id
+	- unless @gift.funded
 		= link_to 'Delete this campaign', gift_path, method: :delete, id: 'delete-gift-button'
 		= link_to 'Update this campaign', edit_gift_path(@gift)

@@ -3,7 +3,7 @@
 	- if current_user.venmo_account
 		= link_to 'Create New Gift Campaign', new_gift_path
 	- else
-		= link_to 'To create your own gift campaign, connect your account to Venmo.', new_user_venmo_path
+		= link_to 'To create your own gift campaign, connect your account to Venmo.', new_venmo_account_path
 
 - @gifts.each do |gift|
 	.gift{:id => "gift_#{gift.id}"}
