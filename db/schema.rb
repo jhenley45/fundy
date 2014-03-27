@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327004528) do
+ActiveRecord::Schema.define(version: 20140327161502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140327004528) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "funded"
+    t.text     "payment_status"
   end
 
   create_table "pledges", force: true do |t|
@@ -38,7 +39,8 @@ ActiveRecord::Schema.define(version: 20140327004528) do
     t.boolean  "owner",      default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "charged"
+    t.text     "status"
+    t.text     "status_msg", default: "Awaiting campaign funding."
   end
 
   add_index "pledges", ["gift_id"], name: "index_pledges_on_gift_id", using: :btree

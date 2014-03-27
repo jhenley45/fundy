@@ -28,7 +28,7 @@
 		= pledge.user.email
 		= pledge.amount.to_s(:currency)
 		- if user_signed_in? && current_user.id == pledge.user_id
-			- unless pledge.charged
+			- unless pledge.status == 'settled' || @gift.funded
 				= link_to 'Delete this pledge', gift_pledge_path(@gift, pledge), method: :delete
 				= link_to 'Update this pledge', edit_gift_pledge_path(@gift, pledge)
 	%br
