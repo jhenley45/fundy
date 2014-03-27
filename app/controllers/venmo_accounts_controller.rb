@@ -1,4 +1,4 @@
-class UserVenmosController < ApplicationController
+class VenmoAccountsController < ApplicationController
   def index
   end
 
@@ -7,10 +7,16 @@ class UserVenmosController < ApplicationController
   		flash['alert'] = 'In order to participate in this app, you must authorize access to your Venmo account. Please try again'
   		redirect_to new_user_venmo_path and return
   	end
-  	UserVenmo.get_user_venmo_info(params[:code], current_user)
+  	VenmoAccount.get_user_venmo_info(params[:code], current_user)
+    flash['alert'] = 'Successfully authorized your Venmo account'
+    redirect_to venmo_account_path(current_user)
   end
 
   def new
+  end
+
+  def show
+    @venmo_account = VenmoAccount.find(params[:id])
   end
 
   def create

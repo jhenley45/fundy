@@ -33,11 +33,11 @@ class Gift < ActiveRecord::Base
 
   def charge_gift_pledges
   	gift_creator = User.find(self.pledges.where(owner: true).first.user_id)
-  	pay_to = gift_creator.user_venmo.venmo_id
+  	pay_to = gift_creator.venmo_account.venmo_id
   	pledges = self.pledges.where(owner: false, charged: nil)
 
   	pledges.each do |pledge|
-  		venmo_info = pledge.user.user_venmo
+  		venmo_info = pledge.user.venmo_account
   		request = 'https://api.venmo.com/v1/payments?'
   		request += 'access_token=' + venmo_info.access_token
   		request += "&user_id=" + pay_to

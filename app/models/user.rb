@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :gifts, -> { uniq }, through: :pledges
   has_many :pledges
-  has_one :user_venmo
+  has_one :venmo_account
 end

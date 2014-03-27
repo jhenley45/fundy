@@ -1,6 +1,6 @@
-class CreateUserVenmos < ActiveRecord::Migration
+class CreateVenmoAccounts < ActiveRecord::Migration
   def change
-    create_table :user_venmos do |t|
+    create_table :venmo_accounts do |t|
       t.references :user, index: true
       t.text :access_token
       t.integer :expires_in

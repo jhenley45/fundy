@@ -1,6 +1,6 @@
 %h1 All current gift campaigns
 - if user_signed_in?
-	- if current_user.user_venmo
+	- if current_user.venmo_account
 		= link_to 'Create New Gift Campaign', new_gift_path
 	- else
 		= link_to 'To create your own gift campaign, connect your account to Venmo.', new_user_venmo_path
