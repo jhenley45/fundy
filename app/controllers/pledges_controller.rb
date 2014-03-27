@@ -48,8 +48,6 @@ class PledgesController < ApplicationController
       flash.now['errors'] = @pledge.errors.full_messages.join(', ')
       render :new
     end
-
-
   end
 
   def edit
