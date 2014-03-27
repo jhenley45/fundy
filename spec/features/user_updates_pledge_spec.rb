@@ -18,7 +18,7 @@ feature 'User Signs In' do
 			click_on 'Update this pledge'
 			fill_in 'New pledge amount:', with: '11.55'
 			click_on 'Update Pledge!'
-			expect(page).to have_content('Your pledge of $11.55 to \'test gift\' has been successfully updated!')
+			expect(page).to have_content('Your updated pledge of $11.55 to \'test gift\' has been successfully recorded!')
 		end
 
 		scenario 'Updates a pledge successfully' do
