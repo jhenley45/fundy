@@ -17,6 +17,11 @@ class PledgesController < ApplicationController
     @pledge = @user.pledges.new(pledge_params)
     @pledge.gift_id = @gift.id
 
+    if @user.is_pledge_duplicate?(@gift, @pledge)
+      flash['alert'] = "This is a duplicate. Please alter this pledge in order to help us process it."
+      redirect_to gift_path(@gift) and return
+    end
+
     if @pledge.save
       if @gift.funded?
         @gift.charge_gift_pledges
@@ -55,9 +60,21 @@ class PledgesController < ApplicationController
   def update
     @gift = Gift.find(params[:gift_id])
     @pledge = Pledge.find(params[:id])
+
+    if current_user.is_pledge_duplicate?(@gift, pledge_params)
+      flash['alert'] = "This is a duplicate. Please alter this pledge in order to help us process it."
+      redirect_to gift_path(@gift) and return
+    end
+
     if @pledge.update(pledge_params)
-      flash['alert'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully updated!"
-      redirect_to @gift
+      gift_now_funded = @gift.check_if_funded
+      if gift_now_funded
+        @gift.charge_gift_pledges
+        flash['alert'] = "Your updated pledge of $#{@pledge.amount} to '#{@gift.name}' has successfully funded this campaign!"
+      else
+        flash['alert'] = "Your updated pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully recorded!"
+      end
+      redirect_to gift_path(@gift)
     else
       flash.now['errors'] = @pledge.errors.full_messages.join(', ')
       render :edit
