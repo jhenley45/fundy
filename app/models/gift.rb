@@ -22,6 +22,7 @@ class Gift < ActiveRecord::Base
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  # Checks to see if the gift is now funded
   def check_if_funded
   	pledge_sum = Pledge.sum(:amount, conditions: {gift_id: self.id})
   	if pledge_sum >= self.goal
@@ -43,6 +44,7 @@ class Gift < ActiveRecord::Base
   	end
   end
 
+  # Returns true if all of the payments have been settled
   def check_gift_payments
     gift_creator = User.find(self.pledges.where(owner: true).first.user_id)
 
@@ -52,10 +54,14 @@ class Gift < ActiveRecord::Base
     all_pledge_status.all?{|i| i == 'settled'}
   end
 
-  def send_gift_emails
+  def send_gift_pledge_emails
     self.pledges.each do |pledge|
-      # send email for each pledge
+      # send email to user for each pledge
     end
+  end
+
+  def send_gift_owner_email
+    # Email the gift owner when their gift is check_if_funded
   end
 
 end
