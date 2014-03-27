@@ -44,10 +44,12 @@ class Gift < ActiveRecord::Base
   end
 
   def check_gift_payments
-    binding.pry
-    all_pledge_status = self.pledges.map do |pledge|
+    gift_creator = User.find(self.pledges.where(owner: true).first.user_id)
+
+    all_pledge_status = self.pledges.where.not(user_id: gift_creator.id).map do |pledge|
       pledge.status
     end
+    all_pledge_status.all?{|i| i == 'settled'}
   end
 
   def send_gift_emails
