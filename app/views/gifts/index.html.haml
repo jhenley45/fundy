@@ -1,14 +1,32 @@
-%h1 All current gift campaigns
 - if user_signed_in?
 	- if current_user.venmo_account
 		= link_to 'Create New Gift Campaign', new_gift_path
 	- else
 		= link_to 'To create your own gift campaign, connect your account to Venmo.', new_venmo_account_path
 
-- @gifts.each do |gift|
-	.gift{:id => "gift_#{gift.id}"}
-		= link_to "#{gift.name}", gift_path(gift)
-
-
+.container
+	.col-xs-12.col-sm-9.col-sm-offset-1#user-feed-title
+		%h1
+			All current gift campaigns
+	.col-xs-12.col-sm-10.col-sm-offset-1#main-gift-feed
+		- @gifts.each do |gift|
+			.col-xs-12.col-sm-3.single-gift
+				.main-feed-gift-title
+					= gift.name
+				.main-feed-image
+					= link_to image_tag(gift.avatar.url(:large), width: '100%'), gift_path(gift)
+				.main-feed-gift-content
+					.main-feed-gift-owner
+						Started by:
+						%span
+							= gift.owner_full_name
+					.main-feed-gift-description
+						Description:
+						%span
+							= gift.description
+					.progress
+						.progress-bar{role: 'progressbar', style: "width: #{gift.percentage_funded}%"}
+							= gift.percentage_funded
+							\%
 
 

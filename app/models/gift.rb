@@ -54,6 +54,16 @@ class Gift < ActiveRecord::Base
     all_pledge_status.all?{|i| i == 'settled'}
   end
 
+  def owner_full_name
+    user = User.find(self.pledges.where(owner: true).first.user_id)
+    user.venmo_account.first_name + ' ' + user.venmo_account.last_name
+  end
+
+  def percentage_funded
+    pledge_sum = Pledge.sum(:amount, conditions: {gift_id: self.id})
+    (pledge_sum/self.goal) * 100
+  end
+
   def send_gift_pledge_emails
     self.pledges.each do |pledge|
       # send email to user for each pledge
