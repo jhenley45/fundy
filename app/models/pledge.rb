@@ -18,7 +18,6 @@ class Pledge < ActiveRecord::Base
 
   def process_pledge(pay_to)
   	body = self.remote_pledge(pay_to)
-  	binding.pry
 
   	if body['error'].present?
       self.status_msg = body['error']['message']
