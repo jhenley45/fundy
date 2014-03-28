@@ -1,16 +1,23 @@
 .form-errors
 
-= form_for @gift, :html => {:id => "new-gift-form"} do |f|
-	= f.label(:name, 'Title for campaign:')
-	= f.text_field :name
-	= f.label(:avatar, 'Campaign Image')
-	= f.file_field(:avatar, value: 'Image:')
-	= f.label(:description, 'Description of gift:')
-	= f.text_field :description
-	= f.label(:reason, 'Reason for gift:')
-	= f.text_field :reason
-	= f.label(:end_date, 'Campaign end date:')
-	= f.text_field :end_date
-	= f.label(:goal, 'Campaign goal:')
-	= f.text_field :goal
-	= f.submit value="Create campaign!"
+= form_for @gift, :html => {:id => "new-gift-form", :role => 'form'} do |f|
+	.form-group
+		= f.label(:name, 'Title for campaign:')
+		= f.text_field(:name, class: 'form-control')
+	.form-group
+		= f.label(:avatar, 'Campaign Image')
+		= f.file_field(:avatar, value: 'Image:')
+	.form-group
+		= f.label(:description, 'Description of gift:')
+		= f.text_field(:description, class: 'form-control')
+	.form-group
+		= f.label(:reason, 'Reason for gift:')
+		= f.text_field(:reason, class: 'form-control')
+	.form-group
+		= f.label(:end_date, 'Campaign end date:')
+		= f.text_field(:end_date, class: 'form-control')
+	.form-group
+		= f.label(:goal, 'Campaign goal:')
+		= f.text_field(:goal, class: 'form-control')
+	.form-group
+		= f.submit value="Create campaign!"
