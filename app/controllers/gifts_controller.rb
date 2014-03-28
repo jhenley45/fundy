@@ -20,7 +20,7 @@ class GiftsController < ApplicationController
 
 		if @gift.save
 			@user.pledges.create!(gift: @gift, owner: true, amount: 0)
-			flash['alert'] = 'Your new gift campaign has been successfully created!'
+			flash['notice'] = 'Your new gift campaign has been successfully created!'
 			redirect_to gift_path(@gift)
 		else
 			flash.now['errors'] = @gift.errors.full_messages.join(', ')
@@ -36,7 +36,7 @@ class GiftsController < ApplicationController
 	def update
 		@gift = Gift.find(params[:id])
 		if @gift.update(gift_params)
-			flash['alert'] = "Your campaign '#{@gift.name}' has been successfully updated."
+			flash['notice'] = "Your campaign '#{@gift.name}' has been successfully updated."
 		  redirect_to @gift
 		else
 			flash.now['errors'] = @gift.errors.full_messages.join(', ')
@@ -48,7 +48,7 @@ class GiftsController < ApplicationController
 		user = current_user
 		@gift = Gift.find(params[:id])
 		if user.gifts.delete(@gift) && @gift.delete
-			flash['alert'] = "Your campaign '#{@gift.name}' has been successfully deleted."
+			flash['notice'] = "Your campaign '#{@gift.name}' has been successfully deleted."
 			redirect_to gifts_path
 		else
 			flash.now['errors'] = @gift.errors.full_messages.join(', ')

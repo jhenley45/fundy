@@ -4,8 +4,8 @@ class VenmoAccountsController < ApplicationController
 
   def confirm_venmo
   	if params['error'].present?
-  		flash['alert'] = 'In order to participate in this app, you must authorize access to your Venmo account. Please try again'
-  		redirect_to new_user_venmo_path and return
+  		flash['alert'] = 'Please try again. In order to participate in this app, you must authorize access to your Venmo account.'
+  		redirect_to new_venmo_account_path and return
   	end
   	VenmoAccount.get_user_venmo_info(params[:code], current_user)
     flash['alert'] = 'Successfully authorized your Venmo account'

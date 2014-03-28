@@ -45,4 +45,8 @@ class Pledge < ActiveRecord::Base
   	JSON.parse(response.body)
   end
 
+  def pledge_gift
+    Gift.find(self.gift_id)
+  end
+
 end

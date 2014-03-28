@@ -19,7 +19,7 @@
 		- if @gift.funded?
 			#funded-notice WARNING: This campaign has been funded. All future pledges will be processed immediately.
 	- else
-		= link_to 'To begin making pledges, connect your account to Venmo.', new_user_venmo_path
+		= link_to 'To begin making pledges, connect your account to Venmo.', new_venmo_account_path
 - else
 	You must log in or sign up to begin making pledges
 %br

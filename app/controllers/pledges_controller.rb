@@ -27,9 +27,9 @@ class PledgesController < ApplicationController
         @gift.charge_gift_pledges
         @pledge.reload
         if @pledge.status == 'settled'
-          flash['alert'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully processed!"
+          flash['notice'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully processed!"
         elsif @pledge.status == 'pending'
-          flash['alert'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' is pending in Venmo."
+          flash['notice'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' is pending in Venmo."
         else
           flash['alert'] = 'Venmo payment error: ' + @pledge.status_msg
         end
@@ -38,9 +38,9 @@ class PledgesController < ApplicationController
         gift_now_funded = @gift.check_if_funded
         if gift_now_funded
           @gift.charge_gift_pledges
-          flash['alert'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has successfully funded this campaign!"
+          flash['notice'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has successfully funded this campaign!"
         else
-          flash['alert'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully recorded!"
+          flash['notice'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully recorded!"
         end
         redirect_to gift_path(@gift)
       end
@@ -68,9 +68,9 @@ class PledgesController < ApplicationController
       gift_now_funded = @gift.check_if_funded
       if gift_now_funded
         @gift.charge_gift_pledges
-        flash['alert'] = "Your updated pledge of $#{@pledge.amount} to '#{@gift.name}' has successfully funded this campaign!"
+        flash['notice'] = "Your updated pledge of $#{@pledge.amount} to '#{@gift.name}' has successfully funded this campaign!"
       else
-        flash['alert'] = "Your updated pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully recorded!"
+        flash['notice'] = "Your updated pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully recorded!"
       end
       redirect_to gift_path(@gift)
     else
