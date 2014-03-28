@@ -20,9 +20,10 @@
 			.progress-bar{role: 'progressbar', style: "width: #{@gift.percentage_funded}%"}
 				= @gift.percentage_funded
 				\%
-		- if current_user.venmo_account
-			.funding-button
-				= link_to 'Make a pledge to this campaign', new_gift_pledge_path(@gift), class: 'btn btn-primary btn-lg', id: 'make-pledge-to-campaign'
+		- if user_signed_in?
+			-if current_user.venmo_account
+				.funding-button
+					= link_to 'Make a pledge to this campaign', new_gift_pledge_path(@gift), class: 'btn btn-primary btn-lg', id: 'make-pledge-to-campaign'
 
 	.col-xs-12.col-sm-6.col-sm-offset-1#gift-show-feed
 		%h1= @gift.name
