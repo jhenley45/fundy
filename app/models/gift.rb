@@ -61,7 +61,7 @@ class Gift < ActiveRecord::Base
 
   def percentage_funded
     pledge_sum = Pledge.sum(:amount, conditions: {gift_id: self.id})
-    (pledge_sum/self.goal) * 100
+    ((pledge_sum/self.goal) * 100)
   end
 
   def send_gift_pledge_emails
