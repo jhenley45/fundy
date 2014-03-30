@@ -19,11 +19,42 @@ body {
 	background-color: whitesmoke;
 }
 
+/* NAVBAR */
+
 .navbar {
 	background-color: #333;
 	border-radius: 0;
 	border: none;
 }
+
+#user-login-button {
+	background-color: #3498db;
+	border: none;
+	color: white;
+}
+#user-login-button:hover {
+	background-color: #2980b9;
+}
+
+#user-create-account-button {
+	border: none;
+}
+
+#user-logout-button {
+	background-color: #3498db;
+	border: none;
+	color: white;
+}
+#user-logout-button:hover {
+	background-color: #2980b9;
+}
+
+#signed-in-text {
+	color: white;
+}
+
+
+/* NOTICES */
 
 .flash_notice {
 	background-color: #dff0d8;
@@ -46,5 +77,24 @@ body {
 	display: block;
 	margin: 0px 20px 20px 20px;
 }
+
+
+/* DEVISE */
+
+.devise-form {
+	max-width: 300px;
+}
+.devise-submit {
+	margin-bottom: 10px;
+	background-color: #3498db;
+	border: none;
+	color: white;
+}
+.devise-submit:hover {
+	background-color: #2980b9;
+	color: white;
+}
+
+
 
 
