@@ -2,7 +2,13 @@
 .container {
 	position: relative;
 }
-#main-gift-feed {
+a:hover {
+	text-decoration: none;
+}
+#user-feed-title h1 {
+	font-family: helvetica;
+	font-weight: bold;
+	color: #333;
 }
 .single-gift {
 	background-color: white;
@@ -17,15 +23,16 @@
 
 .main-feed-image {
 	width: 100%;
-	margin: 10px auto;
+	margin: 0px auto 10px auto;
 }
 .main-feed-gift-title {
 	font-size: 18px;
 	font-weight: bold;
 	text-align: center;
-	margin: 10px auto;
-	border-bottom: 1px solid black;
-	padding-bottom: 10px;
+	margin: 0px auto;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 10px 0px;
+	background-color: #e9eaed;
 }
 .main-feed-gift-content {
 	padding: 10px;
@@ -38,7 +45,6 @@
 }
 .main-feed-gift-description {
 	margin-top: 5px;
-	margin-bottom: 20px;
 	font-weight: bold
 }
 .main-feed-gift-description span {
@@ -103,7 +109,10 @@
 	color: #2ecc71;
 }
 .progress {
-	margin: 40px 10px;
+	margin: 20px 10px;
+}
+.progress-bar {
+	background-color: #1abc9c;
 }
 .funding-button {
 	text-align:center;
