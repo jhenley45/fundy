@@ -1,4 +1,7 @@
 
+.container {
+	position: relative;
+}
 #main-gift-feed {
 }
 .single-gift {
@@ -40,6 +43,34 @@
 }
 .main-feed-gift-description span {
 	font-weight: normal;
+}
+
+/* SIDEBAR */
+
+#main-gift-sidebar {
+
+}
+#main-gift-sidebar-content {
+	width: 170px;
+}
+#main-gift-sidebar-content a {
+	background-color: #1abc9c;
+	border: none;
+	color: white;
+}
+#main-gift-sidebar-content a:hover {
+	background-color: #16a085;
+}
+
+#sidebar-sign-in a {
+	background-color: #3498db;
+	border: none;
+	color: white;
+}
+.affix-top {
+	margin-top: 120px;
+}
+.affix {
 }
 
 

@@ -5,6 +5,7 @@ $(document).ready(function() {
 	Grifter.datepickerFormat();
 	Grifter.addDateValidations();
 	Grifter.formatRemainder();
+	Grifter.addSidebar();
 })
 
 Grifter.datepickerFormat = function() {
@@ -12,6 +13,17 @@ Grifter.datepickerFormat = function() {
         dateFormat: 'D, dd M yy'
     });
 };
+
+Grifter.addSidebar = function() {
+	$('#main-feed-sidebar').affix({
+    offset: {
+      top: 100
+    , bottom: function () {
+        return (this.bottom = $('.footer').outerHeight(true))
+      }
+    }
+  })
+}
 
 Grifter.addDateValidations = function() {
 	$('#new-gift-form').submit(function() {
