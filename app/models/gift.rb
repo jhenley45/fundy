@@ -1,6 +1,6 @@
 class Gift < ActiveRecord::Base
 	has_many :pledges
-	has_many :users, through: :pledges
+	has_many :users, -> { uniq }, through: :pledges
 
 	validates :name, presence: true
 	validates :end_date, presence: true
