@@ -82,7 +82,7 @@ a:hover {
 
 /*----- SHOW PAGE -----*/
 
-#gift-show-feed {
+#gift-show-feed-content {
 	background-color: white;
 	min-height: 400px;
 	background: #fff;
@@ -90,26 +90,60 @@ a:hover {
 	border-color: #e5e6e9 #dfe0e4 #d0d1d5;
 	-webkit-border-radius: 3px;
 	padding: 0;
+
 }
+#gift-show-feed-title {
+	text-align: center;
+	margin: 0px auto;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 10px 0px;
+	background-color: #e9eaed;
+}
+#gift-show-feed-title h1 {
+	margin: 0 auto;
+}
+
+#gift-show-feed-image {
+	margin: 0 auto;
+}
+.single-pledge {
+	min-height: 100px;
+	background: #fff;
+	border: 1px solid;
+	border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+	-webkit-border-radius: 3px;
+	margin-bottom: 20px;
+	padding: 20px;
+	margin-top:10px;
+}
+
+
+/* SHOW PAGE SIDEBAR */
 
 #funding-title {
 	text-align:center;
-	border-bottom: 1px solid #bbb;
+	margin: 0px auto;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 10px 0px;
+	background-color: #e9eaed;
 }
 
 #funding-percentage {
 	text-align:center;
-	font-size: 80px;
+	font-size: 60px;
 	color: #e74c3c;
 }
 .funding-goal {
 	margin-left: 20px;
+	font-size: 20px;
 }
 .funding-goal span {
-	color: #2ecc71;
+	color: #1abc9c;
 }
+
 .progress {
-	margin: 20px 10px;
+	margin: 20px auto;
+	width: 90%;
 }
 .progress-bar {
 	background-color: #1abc9c;
@@ -123,5 +157,44 @@ a:hover {
 	font-size: 14px;
 	margin-bottom: 20px;
 }
+#manage-gift {
+	text-align: center;
+	margin: 20px auto;
+}
+.sidebar-padding {
+	height:1000px;
+}
+.gift-button {
+	width: 90%;
+	font-size: 14px;
+	margin: 5px 0px;
+	border: none;
+}
+#delete-gift-button {
+	background-color: #c0392b;
+}
+#delete-gift-button:hover {
+	background-color: #e74c3c;
+}
 
+@media (min-width: 768px) and (max-width: 979px) {
+	.gift-button {
+		font-size: 11px;
+	}
+	#funding-percentage {
+		font-size: 40px;
+	}
+	.funding-goal {
+		font-size: 15px;
+	}
+}
 
+@media (max-width: 767px) {
+	.sidebar-padding {
+		height:0px;
+	}
+	#user-sidebar {
+		margin-bottom: 15px;
+	}
+
+ }

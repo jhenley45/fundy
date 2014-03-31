@@ -1,5 +1,5 @@
 .container
-	.col-xs-12.col-sm-1.pull-right
+	.col-xs-12.col-sm-1.pull-right.sidebar-padding
 	.col-xs-12.col-sm-3#user-sidebar.pull-right
 
 		%h2#funding-title Funding:
@@ -20,43 +20,54 @@
 			.progress-bar{role: 'progressbar', style: "width: #{@gift.percentage_funded}%"}
 				= @gift.percentage_funded
 				\%
-		- if user_signed_in?
-			-if current_user.venmo_account
-				.funding-button
-					= link_to 'Make a pledge to this campaign', new_gift_pledge_path(@gift), class: 'btn btn-primary btn-lg', id: 'make-pledge-to-campaign'
+		- if user_signed_in? && current_user.venmo_account
+			.funding-button
+				= link_to content_tag(:span, 'Make a Pledge'), new_gift_pledge_path(@gift), class: 'btn btn-primary btn-lg', id: 'make-pledge-to-campaign'
+
+
 
 	.col-xs-12.col-sm-6.col-sm-offset-1#gift-show-feed
-		%h1= @gift.name
+		#gift-show-feed-content
+			#gift-show-feed-title
+				%h1= @gift.name
 
+			#gift-show-feed-image
+				= image_tag @gift.avatar.url(:large)
 
-
-		= image_tag @gift.avatar.url(:large)
-		%br
-		= link_to 'Back to all gifts', gifts_path
-		%br
-		- if user_signed_in?
-			- if current_user.venmo_account
-				- if current_user.id == @gift_owner_id
-					#gift-owner-notice NOTICE: Venmo does not permit users to transfer money into their own account. That means that it is not possible for you, the creator of this campaign, to transfer funds into your own account. While any pledges you make will show up on this page, but please note that if this campaign is funded your account will not actually be charged.
-				- if @gift.funded?
-					#funded-notice WARNING: This campaign has been funded. All future pledges will be processed immediately.
+			= link_to 'Back to all gifts', gifts_path
+			- if user_signed_in?
+				- if current_user.venmo_account
+					- if current_user.id == @gift_owner_id
+						#gift-owner-notice NOTICE: Venmo does not permit users to transfer money into their own account. That means that it is not possible for you, the creator of this campaign, to transfer funds into your own account. While any pledges you make will show up on this page, but please note that if this campaign is funded your account will not actually be charged.
+					- if @gift.funded?
+						#funded-notice WARNING: This campaign has been funded. All future pledges will be processed immediately.
+				- else
+					= link_to 'To begin making pledges, connect your account to Venmo.', new_venmo_account_path
 			- else
-				= link_to 'To begin making pledges, connect your account to Venmo.', new_venmo_account_path
-		- else
-			You must log in or sign up to begin making pledges
-		%br
+				You must log in or sign up to begin making pledges
+
+		%h1 Recent Pledges
 		- @gift.pledges.each do | pledge |
+
 			- if pledge.owner == false
-				= pledge.user.email
-				= pledge.amount.to_s(:currency)
-				= pledge.status
-				- if user_signed_in? && current_user.id == pledge.user_id
-					- unless pledge.status == 'settled' || @gift.funded
-						= link_to 'Delete this pledge', gift_pledge_path(@gift, pledge), method: :delete
-						= link_to 'Update this pledge', edit_gift_pledge_path(@gift, pledge)
-			%br
-		%br
+				.single-pledge
+					.profile-image-feed
+						= image_tag(pledge.user.venmo_account.profile_pic, width: '50px')
+					.feed-content
+						.feed-description
+							= link_to pledge.owner_full_name, venmo_account_path(pledge.user_id)
+							made a pledge of
+							= pledge.amount.to_s(:currency)
+							.feed-timestamp
+								= time_ago_in_words(pledge.updated_at)
+								ago
+
+					= pledge.status
+
+
+
+	.col-xs-12.col-sm-3#manage-gift.pull-right
 		- if user_signed_in? && current_user.id == @gift_owner_id
 			- unless @gift.funded
-				= link_to 'Delete this campaign', gift_path, method: :delete, id: 'delete-gift-button'
-				= link_to 'Update this campaign', edit_gift_path(@gift)
+				= link_to 'Delete this campaign', gift_path, method: :delete, id: 'delete-gift-button', class: 'btn btn-primary btn-lg gift-button'
+				= link_to 'Update this campaign', edit_gift_path(@gift), id: 'update-gift-button', class: 'btn btn-primary btn-lg gift-button'
