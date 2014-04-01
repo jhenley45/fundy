@@ -106,6 +106,10 @@ a:hover {
 #gift-show-feed-image {
 	margin: 0 auto;
 }
+#gift-show-feed-image img {
+	width: 100%;
+}
+
 .single-pledge {
 	min-height: 100px;
 	background: #fff;
@@ -119,6 +123,17 @@ a:hover {
 
 
 /* SHOW PAGE SIDEBAR */
+
+#gift-sidebar {
+	min-height: 300px;
+	background-color: white;
+	background: #fff;
+	border: 1px solid;
+	border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+	-webkit-border-radius: 3px;
+	padding: 0;
+	margin-bottom: 30px;
+}
 
 #funding-title {
 	text-align:center;
@@ -187,6 +202,9 @@ a:hover {
 	.funding-goal {
 		font-size: 15px;
 	}
+	.feed-description {
+		font-size: 12px;
+	}
 }
 
 @media (max-width: 767px) {
@@ -195,6 +213,9 @@ a:hover {
 	}
 	#user-sidebar {
 		margin-bottom: 15px;
+	}
+	.feed-description {
+		font-size: 12px;
 	}
 
  }

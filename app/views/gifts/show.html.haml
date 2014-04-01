@@ -1,6 +1,6 @@
 .container
 	.col-xs-12.col-sm-1.pull-right.sidebar-padding
-	.col-xs-12.col-sm-3#user-sidebar.pull-right
+	.col-xs-12.col-sm-3#gift-sidebar.pull-right
 
 		%h2#funding-title Funding:
 		#funding-percentage
@@ -62,7 +62,7 @@
 								= time_ago_in_words(pledge.updated_at)
 								ago
 
-					= pledge.status
+					= pledge.status_msg
 
 
 
