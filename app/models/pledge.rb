@@ -42,7 +42,6 @@ class Pledge < ActiveRecord::Base
         amount: self.amount.to_s,
         note: 'Payment from my app'
       })
-    binding.pry
 
   	JSON.parse(response.body)
   end
