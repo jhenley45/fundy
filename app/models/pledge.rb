@@ -35,12 +35,15 @@ class Pledge < ActiveRecord::Base
 
   def remote_pledge(pay_to)
   	venmo_info = self.user.venmo_account
-  	request = 'https://api.venmo.com/v1/payments?'
-  	request += 'access_token=' + venmo_info.access_token
-  	request += "&user_id=" + pay_to
-  	request += "&amount=" + self.amount.to_s
-  	request += '&note=Payment-of-' + self.amount.to_s + '-by-my-app'
-  	response = HTTParty.post(request)
+  	request = 'https://api.venmo.com/v1/payments'
+  	response = HTTParty.post(request, query: {
+        access_token: venmo_info.access_token,
+        user_id: pay_to,
+        amount: self.amount.to_s,
+        note: 'Payment from my app'
+      })
+    binding.pry
+
   	JSON.parse(response.body)
   end
 
