@@ -11,7 +11,7 @@ feature 'User Signs In' do
 		end
 
 		scenario 'Adds a new gift successfully' do
-			click_on 'Create New Gift Campaign'
+			click_on 'New Campaign'
 			fill_in 'Title for campaign', with: 'New computer for Steve'
 			fill_in 'Description of gift:', with: 'New macbook pro'
 			fill_in 'Reason for gift:', with: 'Steves birthday is coming up. Lets get him a new computer!'
@@ -22,7 +22,7 @@ feature 'User Signs In' do
 		end
 
 		scenario 'Tries to unsuccessfully add a new gift without a name' do
-			click_on 'Create New Gift Campaign'
+			click_on 'New Campaign'
 
 			fill_in 'Description of gift:', with: 'New macbook pro'
 			fill_in 'Reason for gift:', with: 'Steves birthday is coming up. Lets get him a new computer!'
@@ -33,7 +33,7 @@ feature 'User Signs In' do
 		end
 
 		scenario 'Tries to unsuccessfully add a new gift without an end date' do
-			click_on 'Create New Gift Campaign'
+			click_on 'New Campaign'
 
 			fill_in 'Title for campaign', with: 'New computer for Steve'
 			fill_in 'Description of gift:', with: 'New macbook pro'
@@ -44,7 +44,7 @@ feature 'User Signs In' do
 		end
 
 		scenario 'Tries to unsuccessfully add a new gift without a campaign goal' do
-			click_on 'Create New Gift Campaign'
+			click_on 'New Campaign'
 
 			fill_in 'Title for campaign', with: 'New computer for Steve'
 			fill_in 'Description of gift:', with: 'New macbook pro'
