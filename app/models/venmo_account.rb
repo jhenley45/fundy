@@ -4,11 +4,12 @@ class VenmoAccount < ActiveRecord::Base
   # Sends POST request to Venmo to get info on a user and
   # calls store_venmo_info
   def self.get_user_venmo_info(code, user)
-		request = 'https://api.venmo.com/v1/oauth/access_token?'
-		request += 'client_id=' + ENV['VENMO_CLIENT_ID']
-		request += '&code=' + code
-		request += '&client_secret=' + ENV['VENMO_CLIENT_SECRET']
-		response = HTTParty.post(request)
+		request = 'https://api.venmo.com/v1/oauth/access_token'
+		response = HTTParty.post(request, query: {
+        client_id: ENV['VENMO_CLIENT_ID'],
+        code: code,
+        client_secret: ENV['VENMO_CLIENT_SECRET']
+      })
 		VenmoAccount.store_venmo_info(JSON.parse(response.body), user)
   end
 
