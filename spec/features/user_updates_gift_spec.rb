@@ -5,7 +5,7 @@ feature 'User Signs In' do
 	context 'when signed in' do
 		background do
 			pledge = create(:pledge)
-			pledge.user.create_venmo_account()
+			pledge.user.create_venmo_account(first_name: 'Jack', last_name: 'Henley')
 			visit root_path
 			sign_in_as(pledge.user)
 			click_on 'test gift'
