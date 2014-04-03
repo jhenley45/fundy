@@ -5,13 +5,13 @@ feature 'User Signs In' do
 	context 'when signed in', :js do
 		background do
 			@user = create(:user)
-			@user.create_venmo_account()
+			@user.create_venmo_account(first_name: 'Jack', last_name: 'Hanley')
 			visit root_path
 			sign_in_as(@user)
 		end
 
 		scenario 'Adds a new gift successfully' do
-			click_on 'New Campaign'
+			find('#new-campaign-button').click
 			fill_in 'Title for campaign', with: 'New computer for Steve'
 			fill_in 'Description of gift:', with: 'New macbook pro'
 			fill_in 'Reason for gift:', with: 'Steves birthday is coming up. Lets get him a new computer!'

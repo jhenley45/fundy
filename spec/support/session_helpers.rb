@@ -1,10 +1,10 @@
 module SessionHelpers
 	def sign_in_as(user)
 		visit root_path
-		click_on 'User Login'
+		find('#user-login-button').click
 		fill_in 'Email', with: user.email
 		fill_in 'Password', with: user.password
-		click_button 'Sign in'
+		click_on 'Sign in'
 	end
 
 	def add_new_gift

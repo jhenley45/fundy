@@ -21,4 +21,8 @@ require 'faker'
 		amount 300
 	end
 
+	factory :venmo_account do
+
+	end
+
 end

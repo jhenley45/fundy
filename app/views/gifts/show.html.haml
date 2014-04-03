@@ -63,6 +63,10 @@
 								ago
 
 					= pledge.status_msg
+				- if user_signed_in? && current_user.id == pledge.user_id
+					- unless pledge.status == 'settled' || @gift.funded
+						= link_to 'Delete this pledge', gift_pledge_path(@gift, pledge), method: :delete
+						= link_to 'Update this pledge', edit_gift_pledge_path(@gift, pledge)
 
 
 
