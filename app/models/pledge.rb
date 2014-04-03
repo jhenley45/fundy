@@ -16,6 +16,7 @@ class Pledge < ActiveRecord::Base
   validates_numericality_of :amount, on: :update
 
 
+  # Calls remote_pledge for a given pledge and processes the results for DB
   def process_pledge(pay_to)
   	body = self.remote_pledge(pay_to)
 
@@ -33,6 +34,8 @@ class Pledge < ActiveRecord::Base
   	self.save
   end
 
+  # Sends POST request to Venmo to process a single pledge
+  # Returns JSON for body of response
   def remote_pledge(pay_to)
   	venmo_info = self.user.venmo_account
   	request = 'https://api.venmo.com/v1/payments'
@@ -46,11 +49,12 @@ class Pledge < ActiveRecord::Base
   	JSON.parse(response.body)
   end
 
-  def pledge_gift
-    Gift.find(self.gift_id)
-  end
+  # def pledge_gift
+  #   Gift.find(self.gift_id)
+  # end
 
-  def owner_full_name
+  # Returns full name for the owner of a pledge
+  def pledge_owner_full_name
     user = User.find(self.user_id)
     user.venmo_account.first_name + ' ' + user.venmo_account.last_name
   end

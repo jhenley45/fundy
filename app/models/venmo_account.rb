@@ -1,7 +1,8 @@
 class VenmoAccount < ActiveRecord::Base
   belongs_to :user
 
-
+  # Sends POST request to Venmo to get info on a user and
+  # calls store_venmo_info
   def self.get_user_venmo_info(code, user)
 		request = 'https://api.venmo.com/v1/oauth/access_token?'
 		request += 'client_id=' + ENV['VENMO_CLIENT_ID']
@@ -11,6 +12,7 @@ class VenmoAccount < ActiveRecord::Base
 		VenmoAccount.store_venmo_info(JSON.parse(response.body), user)
   end
 
+  # Stores info returned by get_user_venmo_info in DB
   def self.store_venmo_info(info, user)
   	user.create_venmo_account(
   		access_token: info['access_token'],
