@@ -64,7 +64,7 @@ class Gift < ActiveRecord::Base
   # Returns the percentage a gift has been funded
   def percentage_funded
     pledge_sum = Pledge.sum(:amount, conditions: {gift_id: self.id})
-    ((pledge_sum/self.goal) * 100)
+    '%.1f' % ((pledge_sum/self.goal) * 100)
   end
 
   # TODO
