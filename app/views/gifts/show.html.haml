@@ -29,12 +29,19 @@
 	.col-xs-12.col-sm-6.col-sm-offset-1#gift-show-feed
 		#gift-show-feed-content
 			#gift-show-feed-title
+				= link_to 'Back to all gifts', gifts_path
 				%h1= @gift.name
 
 			#gift-show-feed-image
 				= image_tag @gift.avatar.url(:large)
 
-			= link_to 'Back to all gifts', gifts_path
+			#gift-show-feed-description
+				%h2 Campaign Details
+				= @gift.description
+				-if @gift.reason
+					%h2 Reason for Campaign
+					= @gift.reason
+
 			- if user_signed_in?
 				- if current_user.venmo_account
 					- if current_user.id == @gift_owner_id
