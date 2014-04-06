@@ -19,12 +19,12 @@
 							.feed-description
 								= first_name
 								made a pledge to
-								= link_to event.pledge_gift.name, event.pledge_gift
+								= link_to event.gift.name, event.gift
 								.feed-timestamp
 									= time_ago_in_words(event.updated_at)
 									ago
 						.feed-gift-image
-							= image_tag(event.pledge_gift.avatar.url(:large), width: '100%')
+							= image_tag(event.gift.avatar.url(:large), width: '100%')
 					- elsif event.class.name == 'Gift'
 						.feed-content
 							.feed-description
