@@ -27,6 +27,22 @@ body {
 	border: none;
 }
 
+.logo {
+	font: 400 40px/1.5 'Pacifico', Helvetica, sans-serif;
+	color: white;
+	text-shadow: 3px 3px 0px rgba(0,0,0,0.1),7px 7px 0px rgba(0,0,0,0.05);
+	text-align: center;
+	display: inline;
+}
+.logo a {
+	color: white;
+	text-decoration: none;
+}
+.logo a:hover {
+	color: #2980b9;
+	text-decoration: none;
+}
+
 #user-login-button {
 	background-color: #3498db;
 	border: none;

@@ -24,12 +24,9 @@
 			.funding-button
 				= link_to content_tag(:span, 'Make a Pledge'), new_gift_pledge_path(@gift), class: 'btn btn-primary btn-lg', id: 'make-pledge-to-campaign'
 
-
-
 	.col-xs-12.col-sm-6.col-sm-offset-1#gift-show-feed
 		#gift-show-feed-content
 			#gift-show-feed-title
-				= link_to 'Back to all gifts', gifts_path
 				%h1= @gift.name
 
 			#gift-show-feed-image
