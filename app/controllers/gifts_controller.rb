@@ -7,7 +7,7 @@ class GiftsController < ApplicationController
 	def show
 		@gift = Gift.find(params[:id])
 		@gift_owner_id = @gift.pledges.find_by(owner: true).user_id
-
+		flash['notice'] = 'This campaign has been successfully funded!' if @gift.funded?
 	end
 
 	def new
