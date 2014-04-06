@@ -19,6 +19,8 @@ class Gift < ActiveRecord::Base
   		},
   	default_style: :large
 
+  process_in_background :avatar
+
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
