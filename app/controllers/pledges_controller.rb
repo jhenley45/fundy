@@ -9,6 +9,7 @@ class PledgesController < ApplicationController
   def new
     @gift = Gift.find(params[:gift_id])
     @pledge = Pledge.new
+    @gift_owner_id = @gift.pledges.find_by(owner: true).user_id
   end
 
   def create
