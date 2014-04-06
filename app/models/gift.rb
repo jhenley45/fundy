@@ -61,6 +61,11 @@ class Gift < ActiveRecord::Base
     user.venmo_account.first_name + ' ' + user.venmo_account.last_name
   end
 
+  # Returns the user object of a gift owner
+  def owner
+    User.find(self.pledges.where(owner: true).first.user_id)
+  end
+
   # Returns the percentage a gift has been funded
   def percentage_funded
     pledge_sum = Pledge.sum(:amount, conditions: {gift_id: self.id})
