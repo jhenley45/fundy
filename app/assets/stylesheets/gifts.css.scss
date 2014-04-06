@@ -89,7 +89,7 @@ a:hover {
 	border-color: #e5e6e9 #dfe0e4 #d0d1d5;
 	-webkit-border-radius: 3px;
 	padding: 0;
-
+	margin-bottom: 40px;
 }
 #gift-show-feed-title {
 	text-align: center;
@@ -111,6 +111,9 @@ a:hover {
 #gift-show-feed-description {
 	margin: 0px 15px 30px 15px;
 }
+.gift-show-feed-description-content {
+	margin-left: 15px;
+}
 
 .single-pledge {
 	min-height: 100px;
@@ -118,9 +121,12 @@ a:hover {
 	border: 1px solid;
 	border-color: #e5e6e9 #dfe0e4 #d0d1d5;
 	-webkit-border-radius: 3px;
-	margin-bottom: 20px;
+	margin: 20px 0px;
 	padding: 20px;
-	margin-top:10px;
+}
+
+#no-pledges {
+	margin-top: 15px;
 }
 
 

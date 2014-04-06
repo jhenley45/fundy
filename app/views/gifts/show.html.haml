@@ -37,10 +37,12 @@
 
 			#gift-show-feed-description
 				%h2 Campaign Details
-				= @gift.description
+				.gift-show-feed-description-content
+					= @gift.description
 				-if @gift.reason
 					%h2 Reason for Campaign
-					= @gift.reason
+					.gift-show-feed-description-content
+						= @gift.reason
 
 			- if user_signed_in?
 				- if !current_user.venmo_account
@@ -49,27 +51,32 @@
 				You must log in or sign up to begin making pledges
 
 		%h1 Recent Pledges
-		- @gift.pledges.each do | pledge |
+		- if @gift.pledges.count > 1
+			- @gift.pledges.each do | pledge |
 
-			- if pledge.owner == false
-				.single-pledge
-					.profile-image-feed
-						= image_tag(pledge.user.venmo_account.profile_pic, width: '50px')
-					.feed-content
-						.feed-description
-							= link_to pledge.pledge_owner_full_name, venmo_account_path(pledge.user_id)
-							made a pledge of
-							= pledge.amount.to_s(:currency)
-							.feed-timestamp
-								= time_ago_in_words(pledge.updated_at)
-								ago
+				- if pledge.owner == false
+					.single-pledge
+						.profile-image-feed
+							= image_tag(pledge.user.venmo_account.profile_pic, width: '50px')
+						.feed-content
+							.feed-description
+								= link_to pledge.pledge_owner_full_name, venmo_account_path(pledge.user_id)
+								made a pledge of
+								= pledge.amount.to_s(:currency)
+								.feed-timestamp
+									= time_ago_in_words(pledge.updated_at)
+									ago
 
-					= pledge.status_msg
-				- if user_signed_in? && current_user.id == pledge.user_id
-					- unless pledge.status == 'settled' || @gift.funded
-						= link_to 'Delete this pledge', gift_pledge_path(@gift, pledge), method: :delete
-						= link_to 'Update this pledge', edit_gift_pledge_path(@gift, pledge)
-
+						= pledge.status_msg
+					- if user_signed_in? && current_user.id == pledge.user_id
+						- unless pledge.status == 'settled' || @gift.funded
+							= link_to 'Delete this pledge', gift_pledge_path(@gift, pledge), method: :delete
+							= link_to 'Update this pledge', edit_gift_pledge_path(@gift, pledge)
+		- else
+			.single-pledge
+				#no-pledges
+					No pledges yet. Be the first and
+					= link_to 'make a pledge!', new_gift_pledge_path(@gift)
 
 
 	.col-xs-12.col-sm-3#manage-gift.pull-right
