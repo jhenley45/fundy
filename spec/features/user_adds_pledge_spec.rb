@@ -25,5 +25,12 @@ feature 'User Signs In' do
 			expect(page).to have_content('Amount can\'t be blank')
 		end
 
+		scenario 'Tries to add a pledge of $0' do
+			click_on 'Make a Pledge'
+			fill_in 'Your pledge amount:', with: '0'
+			click_on 'Make Pledge!'
+			expect(page).to have_content('Amount must be greater than 0')
+		end
+
 	end
 end
