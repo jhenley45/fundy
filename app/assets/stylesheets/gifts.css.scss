@@ -266,3 +266,31 @@ a:hover {
 	}
 
  }
+
+
+
+/*----- NEW PAGE ------*/
+
+#new-campaign-title {
+	text-align: center;
+	font-family: helvetica;
+	font-weight: bold;
+	color: #333;
+	font-size: 36px;
+	margin-bottom: 30px;
+}
+
+.form-image-upload button {
+	font-size: 30px;
+}
+
+input.file {
+	font-size: 30px;
+}
+
+
+#new-campaign-submit {
+	background-color: #3498db;
+	border: none;
+	color: white;
+}

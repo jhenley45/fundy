@@ -1,23 +1,30 @@
-.form-errors
+.container
+	.col-xs-12.col-sm-2
+	.col-xs-12.col-sm-8
+		#new-campaign-title
+			New Campaign
+		.form-errors
 
-= form_for @gift, :html => {:id => "new-gift-form", :role => 'form'} do |f|
-	.form-group
-		= f.label(:name, 'Title for campaign:')
-		= f.text_field(:name, class: 'form-control')
-	.form-group
-		= f.label(:avatar, 'Campaign Image')
-		= f.file_field(:avatar, value: 'Image:')
-	.form-group
-		= f.label(:description, 'Description of gift:')
-		= f.text_field(:description, class: 'form-control')
-	.form-group
-		= f.label(:reason, 'Reason for gift:')
-		= f.text_field(:reason, class: 'form-control')
-	.form-group
-		= f.label(:end_date, 'Campaign end date:')
-		= f.text_field(:end_date, class: 'form-control')
-	.form-group
-		= f.label(:goal, 'Campaign goal:')
-		= f.text_field(:goal, class: 'form-control')
-	.form-group
-		= f.submit(value="Create campaign!", id: 'new-campaign-submit')
+		= form_for @gift, :html => {:id => "new-gift-form", :role => 'form'} do |f|
+			.form-group
+				= f.label(:name, 'Title for campaign:')
+				= f.text_field(:name, class: 'form-control', :placeholder => "Public name of your campaign", autofocus: true)
+			.form-group
+				.form-image-upload
+					= f.label(:avatar, 'Campaign Image')
+					= f.file_field(:avatar, value: 'Image:')
+			.form-group
+				= f.label(:description, 'Description of gift:')
+				= f.text_area(:description, rows: 8, class: 'form-control', :placeholder => "Describe your campaign")
+			.form-group
+				= f.label(:reason, 'Reason for gift:')
+				= f.text_area(:reason, rows: 5, class: 'form-control', :placeholder => "Why are you starting this campaign?")
+			.form-group
+				= f.label(:end_date, 'Campaign end date:')
+				= f.text_field(:end_date, class: 'form-control', :placeholder => "Pick a date sometime in the future")
+			.form-group
+				= f.label(:goal, 'Campaign goal:')
+				= f.text_field(:goal, class: 'form-control', :placeholder => "e.g. '400'")
+			.form-group
+				= f.submit(value="Create campaign!", id: 'new-campaign-submit', class: 'btn btn-default navbar-btn')
+	.col-xs-12.col-sm-2
