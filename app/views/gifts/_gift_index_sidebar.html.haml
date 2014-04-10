@@ -1,0 +1,12 @@
+#main-gift-sidebar-content
+	- if user_signed_in?
+		- if current_user.venmo_account
+			= link_to 'New Campaign', new_gift_path, class: "btn btn-default navbar-btn", id: "new-campaign-button"
+		- else
+			To create your own gift campaign, connect your account to Venmo.
+			%div
+				= link_to 'Connect to Venmo', new_venmo_account_path, class: "btn btn-default navbar-btn"
+	- else
+		Sign in to create your own campaign
+		#sidebar-sign-in
+			= link_to 'Sign in', new_user_session_path, class: "btn btn-default navbar-btn"

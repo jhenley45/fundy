@@ -1,0 +1,25 @@
+#user-feed-title
+	%h1
+		All current campaigns
+#main-gift-feed
+- @gifts.each do |gift|
+	.col-sm-3.single-gift
+		.main-feed-gift-title
+			= link_to truncate(gift.name, length: 50), gift_path(gift)
+		.main-feed-image
+			= link_to image_tag(gift.avatar.url(:large), width: '100%'), gift_path(gift)
+		.main-feed-gift-content
+			.main-feed-gift-owner
+				Started by:
+				%span
+					= gift.owner_full_name
+			.main-feed-gift-description
+				Description:
+				%span
+					= truncate(gift.description, length: 100)
+			.main-feed-gift-description
+				Funding:
+			.progress
+				.progress-bar{role: 'progressbar', style: "width: #{gift.percentage_funded}%"}
+					= '%.0f' %gift.percentage_funded
+					\%
