@@ -15,7 +15,7 @@ feature 'User Signs In' do
 			click_on 'Make a Pledge'
 			fill_in 'Your pledge amount:', with: '10.55'
 			click_on 'Make Pledge!'
-			click_on 'Update this pledge'
+			click_on 'Update pledge'
 			fill_in 'New pledge amount:', with: '11.55'
 			click_on 'Update Pledge!'
 			expect(page).to have_content('Your updated pledge of $11.55 to \'test gift\' has been successfully recorded!')
@@ -25,7 +25,7 @@ feature 'User Signs In' do
 			click_on 'Make a Pledge'
 			fill_in 'Your pledge amount:', with: '10.55'
 			click_on 'Make Pledge!'
-			click_on 'Update this pledge'
+			click_on 'Update pledge'
 			fill_in 'New pledge amount:', with: ''
 			click_on 'Update Pledge!'
 			expect(page).to have_content('Amount can\'t be blank')
