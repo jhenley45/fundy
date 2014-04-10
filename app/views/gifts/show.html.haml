@@ -3,95 +3,14 @@
 		= link_to '<-- Back to gifts', gifts_path
 	.col-xs-12.col-sm-1.pull-right.sidebar-padding
 	.col-xs-12.col-sm-3#gift-sidebar.pull-right
-
-		%h2.sidebar-title Funding:
-		#funding-percentage
-			= '%.1f' % @gift.percentage_funded
-			\%
-		%h3.funding-goal
-			Goal:
-			%span
-				= number_to_currency(@gift.goal)
-		%h3.funding-goal
-			Remaining:
-			%span
-				= number_to_currency(calculate_remaining)
-		.progress
-			.progress-bar{role: 'progressbar', style: "width: #{@gift.percentage_funded}%"}
-				= @gift.percentage_funded
-				\%
-		- if user_signed_in? && current_user.venmo_account
-			.funding-button
-				= link_to content_tag(:span, 'Make a Pledge'), new_gift_pledge_path(@gift), class: 'btn btn-primary btn-lg', id: 'make-pledge-to-campaign'
+		= render :partial => 'gift_sidebar'
 
 	.col-xs-12.col-sm-6.col-sm-offset-1#gift-show-feed
-		#gift-show-feed-content
-			#gift-show-feed-title
-				%h1= @gift.name
+		= render :partial => 'gift_content'
 
-			#gift-show-feed-image
-				= image_tag @gift.avatar.url(:large)
-
-			#gift-show-feed-description
-				%h2 Campaign Details
-				.gift-show-feed-description-content
-					= @gift.description
-				-if @gift.reason
-					%h2 Reason for Campaign
-					.gift-show-feed-description-content
-						= @gift.reason
-
-			- if user_signed_in?
-				- if !current_user.venmo_account
-					= link_to 'To begin making pledges, connect your account to Venmo.', new_venmo_account_path
-			- else
-				You must log in or sign up to begin making pledges
-
-		%h1 Recent Pledges
-		- if @gift.pledges.count > 1
-			- @gift.pledges.each do | pledge |
-
-				- if pledge.owner == false
-					.single-pledge
-						.profile-image-feed
-							= image_tag(pledge.user.venmo_account.profile_pic, width: '60px')
-						.feed-content
-							.feed-description
-								= link_to pledge.pledge_owner_full_name, venmo_account_path(pledge.user_id)
-								made a pledge of
-								%span
-									= number_to_currency(pledge.amount)
-								.feed-timestamp
-									= time_ago_in_words(pledge.updated_at)
-									ago
-								Status:
-								= pledge.status_msg
-
-						- if user_signed_in? && current_user.id == pledge.user_id
-							- unless pledge.status == 'settled' || @gift.funded
-								.feed-update-delete-pledge
-									%div
-										= link_to 'Delete pledge', gift_pledge_path(@gift, pledge), method: :delete
-									= link_to 'Update pledge', edit_gift_pledge_path(@gift, pledge)
-		- else
-			.single-pledge
-				#no-pledges
-					No pledges yet. Be the first and
-					= link_to 'make a pledge!', new_gift_pledge_path(@gift)
-
+		= render :partial => 'gift_pledges'
 
 	.col-xs-12.col-sm-3.pull-right
-		- if user_signed_in? && current_user.id == @gift_owner_id
-			#manage-gift
-				- unless @gift.funded
-					= link_to 'Delete this campaign', gift_path, method: :delete, id: 'delete-gift-button', class: 'btn btn-primary btn-lg gift-button'
-					= link_to 'Update this campaign', edit_gift_path(@gift), id: 'update-gift-button', class: 'btn btn-primary btn-lg gift-button'
-		- else
-			#owner-sidebar
-				%h2.sidebar-title Campaign Owner
-				#owner-sidebar-content
-					%h4
-						= link_to @gift.owner_full_name, venmo_account_path(@gift.owner)
-					= image_tag @gift.owner.venmo_account.profile_pic
+		= render :partial => 'gift_sidebar_options'
 
 

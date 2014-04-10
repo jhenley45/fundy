@@ -1,0 +1,19 @@
+%h2.sidebar-title Funding:
+#funding-percentage
+	= '%.1f' % @gift.percentage_funded
+	\%
+%h3.funding-goal
+	Goal:
+	%span
+		= number_to_currency(@gift.goal)
+%h3.funding-goal
+	Remaining:
+	%span
+		= number_to_currency(calculate_remaining)
+.progress
+	.progress-bar{role: 'progressbar', style: "width: #{@gift.percentage_funded}%"}
+		= @gift.percentage_funded
+		\%
+- if user_signed_in? && current_user.venmo_account
+	.funding-button
+		= link_to content_tag(:span, 'Make a Pledge'), new_gift_pledge_path(@gift), class: 'btn btn-primary btn-lg', id: 'make-pledge-to-campaign'

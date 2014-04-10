@@ -1,0 +1,31 @@
+%h1 Recent Pledges
+- if @gift.pledges.count > 1
+	- @gift.pledges.each do | pledge |
+
+		- if pledge.owner == false
+			.single-pledge
+				.profile-image-feed
+					= image_tag(pledge.user.venmo_account.profile_pic, width: '60px')
+				.feed-content
+					.feed-description
+						= link_to pledge.pledge_owner_full_name, venmo_account_path(pledge.user_id)
+						made a pledge of
+						%span
+							= number_to_currency(pledge.amount)
+						.feed-timestamp
+							= time_ago_in_words(pledge.updated_at)
+							ago
+						Status:
+						= pledge.status_msg
+
+				- if user_signed_in? && current_user.id == pledge.user_id
+					- unless pledge.status == 'settled' || @gift.funded
+						.feed-update-delete-pledge
+							%div
+								= link_to 'Delete pledge', gift_pledge_path(@gift, pledge), method: :delete
+							= link_to 'Update pledge', edit_gift_pledge_path(@gift, pledge)
+- else
+	.single-pledge
+		#no-pledges
+			No pledges yet. Be the first and
+			= link_to 'make a pledge!', new_gift_pledge_path(@gift)
