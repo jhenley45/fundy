@@ -1,10 +1,22 @@
-- if current_user.id == @gift_owner_id
-	#gift-owner-notice NOTICE: Venmo does not permit users to transfer money into their own account. That means that it is not possible for you, the creator of this campaign, to transfer funds into your own account. While any pledges you make will show up on this page, but please note that if this campaign is funded your account will not actually be charged.
-- if @gift.funded?
-	#funded-notice WARNING: This campaign has been funded. All future pledges will be processed immediately.
-=calculate_remaining
+.container
+	.col-xs-12.col-sm-2
+	.col-xs-12.col-sm-8
+		#new-pledge-title
+			= @gift.name
+		- if current_user.id == @gift_owner_id
+			.flash_alert
+				NOTICE: Venmo does not permit users to transfer money into their own account. That means that it is not possible for you, the creator of this campaign, to transfer funds into your own account. While any pledges you make will show up on this page, but please note that if this campaign is funded your account will not actually be charged.
+		- if @gift.funded?
+			.flash_alert
+				WARNING: This campaign has been funded. All future pledges will be processed immediately.
 
-= form_for [@gift, @pledge] do |f|
-	= f.label(:amount, 'Your pledge amount:')
-	= f.text_field :amount
-	= f.submit value="Make Pledge!"
+		=calculate_remaining
+
+		= form_for [@gift, @pledge], :html => {:id => "new-pledge-form", :role => 'form'} do |f|
+			.form-group
+				= f.label(:amount, 'Your pledge amount:')
+				= f.text_field :amount
+			.form-group
+				%div
+				= f.submit value="Make Pledge!"
+	.col-xs-12.col-sm-2
