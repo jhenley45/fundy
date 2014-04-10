@@ -11,13 +11,11 @@
 		%h3.funding-goal
 			Goal:
 			%span
-				$
-				= '%.2f' % @gift.goal
+				= number_to_currency(@gift.goal)
 		%h3.funding-goal
 			Remaining:
 			%span
-				$
-				= '%.2f' % calculate_remaining
+				= number_to_currency(calculate_remaining)
 		.progress
 			.progress-bar{role: 'progressbar', style: "width: #{@gift.percentage_funded}%"}
 				= @gift.percentage_funded
@@ -62,7 +60,7 @@
 								= link_to pledge.pledge_owner_full_name, venmo_account_path(pledge.user_id)
 								made a pledge of
 								%span
-									= pledge.amount.to_s(:currency)
+									= number_to_currency(pledge.amount)
 								.feed-timestamp
 									= time_ago_in_words(pledge.updated_at)
 									ago
