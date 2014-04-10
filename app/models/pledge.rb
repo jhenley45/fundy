@@ -11,7 +11,9 @@ class Pledge < ActiveRecord::Base
   	'error' => 'There was an error processing this payment through Venmo.'
   }
 
-  validates :amount, presence: true, :numericality => { :greater_than => 0 }
+  validates :amount, presence: true
+  validates :amount, :numericality => { :greater_than => 0 }, on: :create, :unless => Proc.new { |a| a.owner? }
+  validates :amount, :numericality => { :greater_than => 0 }, on: :update, :unless => Proc.new { |a| a.owner? }
 
 
   # Calls remote_pledge for a given pledge and processes the results for DB
