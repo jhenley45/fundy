@@ -1,7 +1,7 @@
 class GiftsController < ApplicationController
 
 	def index
-		@gifts = Gift.order(params[:sort])
+		@gifts = Gift.order(sort_column + ' ' + sort_direction)
 	end
 
 	def show
@@ -57,6 +57,14 @@ class GiftsController < ApplicationController
 	end
 
 	private
+
+	def sort_column
+		Gift.column_names.include?(params[:name]) ? params[:name] : 'created_at'
+	end
+
+	def sort_direction
+		%w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+	end
 
 	def gift_params
 	  params.require(:gift).permit(:name, :end_date, :goal, :reason, :description, :avatar)
