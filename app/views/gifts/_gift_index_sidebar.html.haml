@@ -13,7 +13,10 @@
 
 	#main-gift-sidebar-sort
 		Sort by:
-		= sortable 'created_at', 'Date'
-		= sortable 'name'
-		= sortable 'goal'
+		.sort-link
+			= sortable('created_at', 'Date')
+		.sort-link
+			= sortable('name')
+		.sort-link
+			= sortable('goal')
 
