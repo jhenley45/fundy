@@ -6,6 +6,7 @@ $(document).ready(function() {
 	Grifter.addDateValidations();
 	Grifter.formatRemainder();
 	Grifter.addSidebar();
+	Grifter.addMasonry();
 })
 
 Grifter.datepickerFormat = function() {
@@ -65,5 +66,10 @@ Grifter.formatRemainder = function() {
 	}
 }
 
-
+Grifter.addMasonry = function() {
+	var $container = $('#main-gift-feed');
+	$container.masonry({
+	  itemSelector: '.single-gift'
+	});
+}
 
