@@ -6,8 +6,14 @@ $(document).ready(function() {
 	Grifter.addDateValidations();
 	Grifter.formatRemainder();
 	Grifter.addSidebar();
-	Grifter.addMasonry();
-})
+
+});
+
+// Call masonry function AFTER all images have loaded
+$(window).load(function() {
+  Grifter.addMasonry();
+});
+
 
 Grifter.datepickerFormat = function() {
 	$('#gift_end_date').datepicker({
