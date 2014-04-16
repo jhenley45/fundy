@@ -10,3 +10,10 @@
 		Sign in to create your own campaign
 		#sidebar-sign-in
 			= link_to 'Sign in', new_user_session_path, class: "btn btn-default navbar-btn"
+
+	#main-gift-sidebar-sort
+		Sort by:
+		= link_to 'Newest', sort: 'created_at'
+		= link_to 'Name', sort: 'name'
+		= link_to 'Goal', sort: 'goal'
+
