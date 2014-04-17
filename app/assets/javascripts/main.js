@@ -14,6 +14,19 @@ $(window).load(function() {
   Grifter.addMasonry();
 });
 
+$(window).resize(function(){
+	console.log('resize called');
+	var width = $(window).width(),
+		sidebar = $('#main-gift-sidebar');
+	if(width <= 900){
+	  sidebar.hide();
+	} else {
+		sidebar.show();
+		console.log('show');
+	}
+})
+.resize();//trigger the resize event on page load.
+
 
 Grifter.datepickerFormat = function() {
 	$('#gift_end_date').datepicker({
@@ -24,8 +37,8 @@ Grifter.datepickerFormat = function() {
 Grifter.addSidebar = function() {
 	$('#main-feed-sidebar').affix({
     offset: {
-      top: 100
-    , bottom: function () {
+      top: 100,
+      bottom: function () {
         return (this.bottom = $('.footer').outerHeight(true))
       }
     }
