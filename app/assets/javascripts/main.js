@@ -6,7 +6,7 @@ $(document).ready(function() {
 	Grifter.addDateValidations();
 	Grifter.formatRemainder();
 	Grifter.addSidebar();
-
+	Grifter.paymentStatus();
 });
 
 // Call masonry function AFTER all images have loaded
@@ -92,3 +92,12 @@ Grifter.addMasonry = function() {
 	});
 }
 
+Grifter.paymentStatus = function() {
+	$('.feed-status').each (function(index) {
+		if (this.innerHTML.indexOf("Payment successfully processed") >= 0) {
+			$(this).parents().eq(2).css({
+				background: 'rgba(0, 255, 0, .1)'
+			});
+		};
+	});
+};

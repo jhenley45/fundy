@@ -15,8 +15,9 @@
 						.feed-timestamp
 							= time_ago_in_words(pledge.updated_at)
 							ago
-						Status:
-						= pledge.status_msg
+						.feed-status
+							Status:
+							= pledge.status_msg
 
 				- if user_signed_in? && current_user.id == pledge.user_id
 					- unless pledge.status == 'settled' || @gift.funded
