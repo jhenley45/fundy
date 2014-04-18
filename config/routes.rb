@@ -16,4 +16,6 @@ Grifter::Application.routes.draw do
   end
 
   root to: 'gifts#index'
+
+
 end

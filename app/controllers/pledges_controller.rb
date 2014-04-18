@@ -38,7 +38,9 @@ class PledgesController < ApplicationController
       else
         gift_now_funded = @gift.check_if_funded
         if gift_now_funded
-          @gift.charge_gift_pledges
+          # RESQUE
+          Resque.enqueue(PledgeWorker, @gift.id)
+          # @gift.charge_gift_pledges
           flash['notice'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has successfully funded this campaign!"
         else
           flash['notice'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully recorded!"

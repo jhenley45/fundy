@@ -19,6 +19,8 @@ gem 'aws-sdk'
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
+gem 'resque-web', require: 'resque_web'
+gem 'redis'
 gem 'delayed_paperclip'
 
 # These are gems you may find useful for testing
