@@ -15,7 +15,7 @@ feature 'User Signs In' do
 			click_on 'Make a Pledge'
 			fill_in 'Your pledge amount:', with: '10.55'
 			click_on 'Make Pledge!'
-			click_on 'Delete this pledge'
+			click_on 'Delete pledge'
 			expect(page).to have_content('Your pledge of $10.55 to \'test gift\' has been successfully deleted!')
 		end
 

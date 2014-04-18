@@ -1,13 +1,13 @@
 class GiftsController < ApplicationController
 
 	def index
-		@gifts = Gift.all
+		@gifts = Gift.order(sort_column + ' ' + sort_direction)
 	end
 
 	def show
 		@gift = Gift.find(params[:id])
 		@gift_owner_id = @gift.pledges.find_by(owner: true).user_id
-		flash['notice'] = 'This campaign has been successfully funded!' if @gift.funded?
+		flash.now['notice'] = 'This campaign has been successfully funded!' if @gift.funded?
 	end
 
 	def new
@@ -57,6 +57,14 @@ class GiftsController < ApplicationController
 	end
 
 	private
+
+	def sort_column
+		Gift.column_names.include?(params[:name]) ? params[:name] : 'created_at'
+	end
+
+	def sort_direction
+		%w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+	end
 
 	def gift_params
 	  params.require(:gift).permit(:name, :end_date, :goal, :reason, :description, :avatar)

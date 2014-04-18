@@ -38,7 +38,7 @@ class Gift < ActiveRecord::Base
 
   #Initiates charging for a gift
   def charge_gift_pledges
-  	gift_creator = User.find(self.pledges.where(owner: true).first.user_id)
+  	gift_creator = self.owner
   	pay_to = gift_creator.venmo_account.venmo_id
   	pledges = self.pledges.where(owner: false, status: nil)
 
@@ -49,7 +49,7 @@ class Gift < ActiveRecord::Base
 
   # Returns true if all of the payments have been settled
   def check_gift_payments
-    gift_creator = User.find(self.pledges.where(owner: true).first.user_id)
+    gift_creator = self.owner
 
     all_pledge_status = self.pledges.where.not(user_id: gift_creator.id).map do |pledge|
       pledge.status
@@ -59,8 +59,8 @@ class Gift < ActiveRecord::Base
 
   # Returns the full name of a gift owner
   def owner_full_name
-    user = User.find(self.pledges.where(owner: true).first.user_id)
-    user.venmo_account.first_name + ' ' + user.venmo_account.last_name
+    owner = self.owner
+    owner.venmo_account.first_name + ' ' + owner.venmo_account.last_name
   end
 
   # Returns the user object of a gift owner
@@ -71,7 +71,8 @@ class Gift < ActiveRecord::Base
   # Returns the percentage a gift has been funded
   def percentage_funded
     pledge_sum = Pledge.sum(:amount, conditions: {gift_id: self.id})
-    '%.1f' % ((pledge_sum/self.goal) * 100)
+    funded_percent = '%.1f' % ((pledge_sum/self.goal) * 100)
+    funded_percent.to_i < 100 ? funded_percent : 100
   end
 
   # TODO

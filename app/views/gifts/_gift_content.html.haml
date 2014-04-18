@@ -1,0 +1,21 @@
+#gift-show-feed-content
+	#gift-show-feed-title
+		%h1= @gift.name
+
+	#gift-show-feed-image
+		= image_tag @gift.avatar.url(:large)
+
+	#gift-show-feed-description
+		%h2 Campaign Details
+		.gift-show-feed-description-content
+			= @gift.description
+		-if @gift.reason
+			%h2 Reason for Campaign
+			.gift-show-feed-description-content
+				= @gift.reason
+
+	- if user_signed_in?
+		- if !current_user.venmo_account
+			= link_to 'To begin making pledges, connect your account to Venmo.', new_venmo_account_path
+	- else
+		You must log in or sign up to begin making pledges

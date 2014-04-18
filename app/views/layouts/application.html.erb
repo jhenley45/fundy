@@ -4,6 +4,7 @@
   <title>Fundy</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "masonry" %>
   <%= csrf_meta_tags %>
   <link href="http://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
 </head>
@@ -14,15 +15,17 @@
 		</div>
 
 		<div class='col-xs-12 col-sm-3 pull-right'>
-			<% if user_signed_in? %>
-				<p class="navbar-text" id='signed-in-text'>
-					<%= current_user.email %>
-				</p>
-				<%= link_to 'Sign Out', destroy_user_session_path, class: "btn btn-default navbar-btn", method: :delete, id: 'user-logout-button' %>
-			<% else %>
-				<%= link_to 'User Login', new_user_session_path, class: "btn btn-default navbar-btn", id: 'user-login-button' %>
-				<%= link_to 'Create an Account', new_user_registration_path, class: "btn btn-default navbar-btn", id: 'user-create-account-button' %>
-			<% end %>
+			<div id='button-container'>
+				<% if user_signed_in? %>
+					<p class="navbar-text" id='signed-in-text'>
+						<%= current_user.email %>
+					</p>
+					<%= link_to 'Sign Out', destroy_user_session_path, class: "btn btn-default navbar-btn", method: :delete, id: 'user-logout-button' %>
+				<% else %>
+					<%= link_to 'User Login', new_user_session_path, class: "btn btn-default navbar-btn", id: 'user-login-button' %>
+					<%= link_to 'Create an Account', new_user_registration_path, class: "btn btn-default navbar-btn", id: 'user-create-account-button' %>
+				<% end %>
+			</div>
 		</div>
 
 	</nav>

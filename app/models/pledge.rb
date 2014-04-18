@@ -12,8 +12,8 @@ class Pledge < ActiveRecord::Base
   }
 
   validates :amount, presence: true
-  validates_numericality_of :amount, on: :create
-  validates_numericality_of :amount, on: :update
+  validates :amount, :numericality => { :greater_than => 0 }, on: :create, :unless => Proc.new { |a| a.owner? }
+  validates :amount, :numericality => { :greater_than => 0 }, on: :update, :unless => Proc.new { |a| a.owner? }
 
 
   # Calls remote_pledge for a given pledge and processes the results for DB
