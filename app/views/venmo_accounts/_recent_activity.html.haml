@@ -1,0 +1,26 @@
+-if recent_activity
+	- recent_activity.each do |event|
+		.user-single-feed
+			.profile-image-feed
+				= image_tag(@venmo_account.profile_pic, width: '50px')
+			- if event.class.name == 'Pledge'
+				.feed-content
+					.feed-description
+						= first_name
+						made a pledge of
+						%span
+							= number_to_currency(event.amount)
+						to
+						= link_to event.gift.name, event.gift
+						.feed-timestamp
+							= time_ago_in_words(event.updated_at)
+							ago
+			- elsif event.class.name == 'Gift'
+				.feed-content
+					.feed-description
+						= first_name
+						created a new campaign:
+						= link_to event.name, event
+					.feed-timestamp
+						= time_ago_in_words(event.updated_at)
+						ago
