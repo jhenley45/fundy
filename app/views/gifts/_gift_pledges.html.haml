@@ -8,7 +8,7 @@
 					= image_tag(pledge.user.venmo_account.profile_pic, width: '60px')
 				.feed-content
 					.feed-description
-						= link_to pledge.pledge_owner_full_name, venmo_account_path(pledge.user_id)
+						= link_to pledge_owner_full_name(pledge.user_id), venmo_account_path(pledge.user_id)
 						made a pledge of
 						%span
 							= number_to_currency(pledge.amount)

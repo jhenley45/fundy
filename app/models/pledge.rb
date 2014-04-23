@@ -53,10 +53,6 @@ class Pledge < ActiveRecord::Base
   #   Gift.find(self.gift_id)
   # end
 
-  # Returns full name for the owner of a pledge
-  def pledge_owner_full_name
-    user = User.find(self.user_id)
-    user.venmo_account.first_name + ' ' + user.venmo_account.last_name
-  end
+
 
 end
