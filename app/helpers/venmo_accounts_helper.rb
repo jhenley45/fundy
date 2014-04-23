@@ -12,4 +12,5 @@ module VenmoAccountsHelper
 		activity.sort_by(&:updated_at).reverse
 	end
 
+
 end

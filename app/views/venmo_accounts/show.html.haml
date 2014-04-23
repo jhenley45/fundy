@@ -5,6 +5,17 @@
 		#user-profile-name
 			%h3
 				= full_name
+
+		#user-sidebar-content
+			.user-sidebar-div
+				%b Member Since:
+				= @venmo_account.user.created_at.strftime("%B %e, %Y")
+			.user-sidebar-div
+				%b Campaigns Started:
+				= @venmo_account.campaign_count
+			.user-sidebar-div
+				%b Pledges Made:
+				= @venmo_account.pledge_count
 	.col-xs-12.col-sm-6.col-sm-offset-1#user-feed-title
 		%h1
 			Recent Activity
@@ -18,13 +29,14 @@
 						.feed-content
 							.feed-description
 								= first_name
-								made a pledge to
+								made a pledge of
+								%span
+									= number_to_currency(event.amount)
+								to
 								= link_to event.gift.name, event.gift
 								.feed-timestamp
 									= time_ago_in_words(event.updated_at)
 									ago
-						.feed-gift-image
-							= image_tag(event.gift.avatar.url(:large), width: '100%')
 					- elsif event.class.name == 'Gift'
 						.feed-content
 							.feed-description
@@ -34,8 +46,7 @@
 							.feed-timestamp
 								= time_ago_in_words(event.updated_at)
 								ago
-						.feed-gift-image
-							= image_tag(event.avatar.url(:large), width: '100%')
+
 
 
 

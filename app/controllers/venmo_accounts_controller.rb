@@ -8,7 +8,7 @@ class VenmoAccountsController < ApplicationController
   		redirect_to new_venmo_account_path and return
   	end
   	VenmoAccount.get_user_venmo_info(params[:code], current_user)
-    flash['alert'] = 'Successfully authorized your Venmo account'
+    flash['notice'] = 'Successfully authorized your Venmo account'
     redirect_to venmo_account_path(id: current_user.venmo_account.id)
   end
 
