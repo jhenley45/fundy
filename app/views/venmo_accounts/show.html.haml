@@ -12,10 +12,10 @@
 				= @venmo_account.user.created_at.strftime("%B %e, %Y")
 			.user-sidebar-div
 				%b Campaigns Started:
-				= @venmo_account.campaign_count
+				= campaign_count
 			.user-sidebar-div
 				%b Pledges Made:
-				= @venmo_account.pledge_count
+				= pledge_count
 	.col-xs-12.col-sm-6.col-sm-offset-1#user-feed-title
 		%h1
 			Recent Activity

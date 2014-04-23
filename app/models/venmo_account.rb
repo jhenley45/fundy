@@ -29,11 +29,5 @@ class VenmoAccount < ActiveRecord::Base
   	)
   end
 
-  def campaign_count
-    self.user.pledges.where(owner: true).count
-  end
 
-  def pledge_count
-    self.user.pledges.where(owner: false).count
-  end
 end

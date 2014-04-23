@@ -12,5 +12,12 @@ module VenmoAccountsHelper
 		activity.sort_by(&:updated_at).reverse
 	end
 
+	def campaign_count
+	  @venmo_account.user.pledges.where(owner: true).count
+	end
+
+	def pledge_count
+	  @venmo_account.user.pledges.where(owner: false).count
+	end
 
 end
