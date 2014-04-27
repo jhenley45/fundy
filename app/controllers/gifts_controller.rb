@@ -1,7 +1,7 @@
 class GiftsController < ApplicationController
 
 	def index
-		@gifts = Gift.order(sort_column + ' ' + sort_direction)
+		@gifts = Gift.where(private: false).order(sort_column + ' ' + sort_direction)
 	end
 
 	def show

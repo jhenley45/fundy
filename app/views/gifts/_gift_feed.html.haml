@@ -12,7 +12,7 @@
 				.main-feed-gift-owner
 					Started by:
 					%span
-						= link_to gift.owner_full_name, venmo_account_path(gift.owner)
+						= link_to gift.owner_full_name, venmo_account_path(gift.owner.venmo_account)
 				.main-feed-gift-description
 					Description:
 					%span

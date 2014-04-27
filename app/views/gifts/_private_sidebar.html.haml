@@ -1,1 +1,7 @@
 %h2.sidebar-title Campaign Members:
+- if @gift.invited_users.any?
+	- @gift.invited_users.each do |user|
+		= user.name
+-else
+	There are no members of this campaign. Get starting by
+	= link_to 'inviting users', new_gift_invitation_path(@gift)

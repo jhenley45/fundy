@@ -1,5 +1,10 @@
 Grifter::Application.routes.draw do
 
+  # get "invitations/index"
+  # get "invitations/new"
+  # get "invitations/create"
+  # get "invitations/show"
+  # get "invitations/destroy"
   # get "user_venmos/index"
   # get "user_venmos/new"
   # get "user_venmos/create"
@@ -13,6 +18,7 @@ Grifter::Application.routes.draw do
 
   resources :gifts do
   	resources :pledges
+    resources :invitations
   end
 
   root to: 'gifts#index'

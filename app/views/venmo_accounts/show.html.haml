@@ -1,6 +1,6 @@
 = link_to 'View all gifts', gifts_path
 .container
-	.col-xs-12.col-sm-1.pull-right
+	.col-xs-12.col-sm-1.pull-right.sidebar-padding
 	.col-xs-12.col-sm-3#user-sidebar.pull-right
 		#user-profile-name
 			%h3
@@ -21,6 +21,14 @@
 			Recent Activity
 	.col-xs-12.col-sm-6.col-sm-offset-1#user-profile-feed
 		= render :partial => 'recent_activity'
+
+	.col-xs-12.col-sm-1.pull-right
+	.col-xs-12.col-sm-3#user-gifts.pull-right
+		= first_name
+		's campaigns
+		- @venmo_account.user.gifts.each do |gift|
+			%li{ :data => {:private => ('true' if gift.private?), :owner => ('true' if gift.owner.id == @venmo_account.user_id) }}
+				= gift.name
 
 
 
