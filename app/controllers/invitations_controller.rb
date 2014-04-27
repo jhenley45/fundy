@@ -8,9 +8,11 @@ class InvitationsController < ApplicationController
   end
 
   def create
+    @gift = Gift.find(params[:gift_id])
     params[:invite_ids].each do |invite_id|
-      Invitation.create!(user_id: invite_id, gift_id: params[:gift_id])
+      Invitation.find_or_create_by(user_id: invite_id, gift_id: params[:gift_id])
     end
+    redirect_to @gift
   end
 
   def show

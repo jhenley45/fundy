@@ -1,7 +1,8 @@
 %h2.sidebar-title Campaign Members:
 - if @gift.invited_users.any?
 	- @gift.invited_users.each do |user|
-		= user.name
+		= user.venmo_account.first_name + ' ' + user.venmo_account.last_name
+	= link_to 'invite users', new_gift_invitation_path(@gift)
 -else
 	There are no members of this campaign. Get starting by
 	= link_to 'inviting users', new_gift_invitation_path(@gift)
