@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :gifts, -> { uniq }, through: :pledges
   has_many :pledges
+  has_many :invitations
+  has_many :invites, through: :invitations, source: :gift
   has_one :venmo_account
 
   # Checks to see if a user's pledge is a duplicate a previous pledge for a given gift

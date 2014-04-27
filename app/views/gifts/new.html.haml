@@ -26,5 +26,8 @@
 				= f.label(:goal, 'Campaign goal:')
 				= f.text_field(:goal, class: 'form-control', :placeholder => "e.g. '400'")
 			.form-group
+				= f.label(:private, 'Check box if you want this to be a private campaign.')
+				= f.check_box(:private)
+			.form-group
 				= f.submit(value="Create campaign!", id: 'new-campaign-submit', class: 'btn btn-default navbar-btn')
 	.col-xs-12.col-sm-2

@@ -5,11 +5,15 @@
 	.col-xs-12.col-sm-3#gift-sidebar.pull-right
 		= render :partial => 'gift_sidebar'
 
+
 	.col-xs-12.col-sm-6.col-sm-offset-1#gift-show-feed
 		= render :partial => 'gift_content'
 
 		= render :partial => 'gift_pledges'
 
+	- if @gift.private?
+		.col-xs-12.col-sm-3#gift-private-sidebar.pull-right
+			= render :partial => 'private_sidebar'
 	.col-xs-12.col-sm-3.pull-right
 		= render :partial => 'gift_sidebar_options'
 
