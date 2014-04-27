@@ -1,2 +1,8 @@
-%h1 Invitations#new
-%p Find me in app/views/invitations/new.html.haml
+%h1 Invite Users
+= form_for [@gift, @invitation], :html => {:id => "new-invitation-form", :role => 'form'} do |f|
+	- VenmoAccount.where("user_id > ?", 0).each do |user|
+		.form-group
+			= check_box_tag('invite_ids[]', user.user.id)
+			= user.first_name + ' ' + user.last_name
+	.form-group
+		= f.submit(value="Invite Users", id: 'new-invitation-submit', class: 'btn btn-default navbar-btn')
