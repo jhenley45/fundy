@@ -1,3 +1,17 @@
 // Place all the styles related to the Invitations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#campaign-members {
+	margin: 20px 20px 0px 20px;
+	max-height:200px;
+	overflow: scroll;
+}
+.campaign-member {
+	margin: 5px 0px;
+}
+#invite-to-campaign {
+	width: 100%;
+	font-size: 14px;
+	border-radius: 0;
+}

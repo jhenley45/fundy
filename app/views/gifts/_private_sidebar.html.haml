@@ -1,8 +1,10 @@
 %h2.sidebar-title Campaign Members:
-- if @gift.invited_users.any?
-	- @gift.invited_users.each do |user|
-		= user.venmo_account.first_name + ' ' + user.venmo_account.last_name
-	= link_to 'invite users', new_gift_invitation_path(@gift)
--else
-	There are no members of this campaign. Get starting by
-	= link_to 'inviting users', new_gift_invitation_path(@gift)
+#campaign-members
+	- if @gift.invited_users.any?
+		- @gift.invited_users.each do |user|
+			.campaign-member
+				= image_tag(user.venmo_account.profile_pic, width: '60px')
+				= link_to user.venmo_account.full_name, venmo_account_path(user.venmo_account)
+	-else
+		There are no members of this campaign.
+= link_to content_tag(:span, 'Invite Users'), new_gift_invitation_path(@gift), class: 'btn btn-primary btn-lg', id: 'invite-to-campaign'
