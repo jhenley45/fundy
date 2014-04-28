@@ -16,4 +16,17 @@ module GiftsHelper
 		@remainder = @gift.goal - sum
 	end
 
+	def gift_sort
+		unless current_user
+			@gifts = @gifts.where(private: false)
+		else
+			@gifts.delete_if {|gift| gift.private? && !current_user.invites.include?(gift)}
+		end
+	end
+
+	def pledge_sum(gift)
+	  pledge_sum = gift.pledges.sum(:amount)
+	  funded_percent = '%.1f' % ((pledge_sum/gift.goal) * 100)
+	  funded_percent.to_i < 100 ? funded_percent : 100
+	end
 end
