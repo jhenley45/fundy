@@ -23,5 +23,7 @@ describe Gift do
 	describe 'associations' do
 		it { should have_many(:users) }
 		it { should have_many(:pledges) }
+		it { should have_many(:invited_users) }
+		it { should have_many(:invitations) }
 	end
 end

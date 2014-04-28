@@ -25,22 +25,29 @@
 	.col-xs-12.col-sm-1.pull-right
 	.col-xs-12.col-sm-3#user-gifts.pull-right
 		%h2.sidebar-title All Campaigns
-		#user-gift-sidebar-sort
-			= link_to('All', 'javascript:;', html_options = {:id => 'all', class: 'user-gift-sort'})
-			|
-			= link_to('Private', 'javascript:;', html_options = {:id => 'private', class: 'user-gift-sort'})
-			|
-			= link_to('Owned', 'javascript:;', html_options = {:id => 'owner', class: 'user-gift-sort'})
-			|
-			= link_to('Invites', 'javascript:;', html_options = {:id => 'invited', class: 'user-gift-sort'})
-		#user-gift-list
+		- if current_user
 			- if @venmo_account.user.id == current_user.id
+				#user-gift-sidebar-sort
+					= link_to('All', 'javascript:;', html_options = {:id => 'all', class: 'user-gift-sort'})
+					|
+					= link_to('Private', 'javascript:;', html_options = {:id => 'private', class: 'user-gift-sort'})
+					|
+					= link_to('Owned', 'javascript:;', html_options = {:id => 'owner', class: 'user-gift-sort'})
+					|
+					= link_to('Invites', 'javascript:;', html_options = {:id => 'invited', class: 'user-gift-sort'})
+				#user-gift-list
+					- @venmo_account.user.gifts.each do |gift|
+						.user-sidebar-gift{ :data => {:private => ('true' if gift.private?), :owner => ('true' if gift.owner.id == @venmo_account.user_id), :invited => ('true' if gift.invited_users.include?(@venmo_account.user)), :all => 'true' }}
+							= link_to gift.name, gift_path(gift)
+		- else
+			#user-gift-sidebar-sort
+				= link_to('All', 'javascript:;', html_options = {:id => 'all', class: 'user-gift-sort'})
+				|
+				= link_to('Owned', 'javascript:;', html_options = {:id => 'owner', class: 'user-gift-sort'})
+			#user-gift-list
 				- @venmo_account.user.gifts.each do |gift|
-					.user-sidebar-gift{ :data => {:private => ('true' if gift.private?), :owner => ('true' if gift.owner.id == @venmo_account.user_id), :invited => ('true' if gift.invited_users.include?(@venmo_account.user)), :all => 'true' }}
-						= link_to gift.name, gift_path(gift)
-			- else
-				different user
-
-
+					- if !gift.private?
+						.user-sidebar-gift{ :data => {:private => ('true' if gift.private?), :owner => ('true' if gift.owner.id == @venmo_account.user_id), :invited => ('true' if gift.invited_users.include?(@venmo_account.user)), :all => 'true' }}
+							= link_to gift.name, gift_path(gift)
 
 
