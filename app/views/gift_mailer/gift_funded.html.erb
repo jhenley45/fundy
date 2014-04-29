@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Your Campaign "<%= @gift.name.titleize %>" Has Been Funded</h1>
+    <p>
+      <%= @user.venmo_account.full_name %> made a pledge in the amount of $<%= @pledge.amount %> to fund your campaign.<br>
+    </p>
+    <h2>Pledge History</h2>
+    <% @gift.pledges.each do |pledge| %>
+      <% if pledge.owner == false %>
+        <p>
+          <b><%= pledge.user.venmo_account.full_name %>:</b> <%= number_to_currency(pledge.amount) %>
+        </p>
+      <% end %>
+    <% end %>
+    <p><%= link_to 'Click to view full pledge history', gift_url(@gift) %></p><br />
+    <p>Thanks for using FundyApp and have a great day!</p>
+  </body>
+</html>

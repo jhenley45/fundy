@@ -6,7 +6,7 @@
   <body>
     <h1>Thanks for your pledge, <%= @user.venmo_account.full_name %></h1>
     <p>
-      You have successfully made a pledge to <%= @pledge.gift.name %> in the amount of $<%= @pledge.amount %>.<br>
+      You have successfully made a pledge to "<%= @pledge.gift.name %>"" in the amount of <%= number_to_currency(@pledge.amount) %>.<br>
     </p>
     <p>Thanks for using FundyApp and have a great day!</p>
   </body>
