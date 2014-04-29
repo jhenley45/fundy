@@ -40,7 +40,9 @@ class PledgesController < ApplicationController
         if gift_now_funded
           @gift.charge_gift_pledges
           flash['notice'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has successfully funded this campaign!"
+          GiftMailer.gift_funded(@pledge, @gift, @user).deliver
         else
+          PledgeMailer.pledge_owner_email(@pledge, @user).deliver
           flash['notice'] = "Your pledge of $#{@pledge.amount} to '#{@gift.name}' has been successfully recorded!"
         end
         redirect_to gift_path(@gift)

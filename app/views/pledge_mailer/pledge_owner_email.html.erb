@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>A New Pledge Was Made to "<%= @pledge.gift.name.titleize %>"</h1>
+    <p>
+      <%= @user.venmo_account.full_name %> made a pledge in the amount of <%= number_to_currency(@pledge.amount) %>.<br>
+    </p>
+    <p>
+      Remaining funding for "<%= @pledge.gift.name.titleize %>" is <%= number_to_currency(@pledge.gift.calculate_remaining) %><br>
+    </p>
+    <p>Thanks for using FundyApp and have a great day!</p>
+  </body>
+</html>
