@@ -75,6 +75,14 @@ class Gift < ActiveRecord::Base
     funded_percent.to_i < 100 ? funded_percent : 100
   end
 
+  def calculate_remaining
+    sum = 0
+    self.pledges.each do |pledge|
+      sum += pledge.amount
+    end
+    self.goal - sum
+  end
+
   # TODO
   def send_gift_pledge_emails
     self.pledges.each do |pledge|
