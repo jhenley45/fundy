@@ -45,6 +45,7 @@ class PledgesController < ApplicationController
         end
         redirect_to gift_path(@gift)
       end
+      PledgeMailer.pledge_email(@pledge, @user).deliver
     else
       flash.now['errors'] = @pledge.errors.full_messages.join(', ')
       render :new
