@@ -4,7 +4,6 @@ class GiftsController < ApplicationController
 		@gifts = Gift.order(sort_column + ' ' + sort_direction)
 		if params[:private_only] == 'true'
 			@gifts = @gifts.select { |gift| gift.private? }
-			binding.pry
 		end
 	end
 
