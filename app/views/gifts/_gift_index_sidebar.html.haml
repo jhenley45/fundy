@@ -20,5 +20,5 @@
 		.sort-link
 			= sortable('goal')
 		.sort-link
-			= link_to 'Private Only', root_path(private_only: true)
+			= link_to 'Private Only', root_path(private_only: true, params: @params)
 

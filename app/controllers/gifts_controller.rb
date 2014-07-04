@@ -1,10 +1,12 @@
 class GiftsController < ApplicationController
 
 	def index
+		binding.pry
 		@gifts = Gift.order(sort_column + ' ' + sort_direction)
 		if params[:private_only] == 'true'
 			@gifts = @gifts.select { |gift| gift.private? }
 		end
+		@params = params.except(:action, :controller)
 	end
 
 	def show
